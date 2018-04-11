@@ -17,8 +17,8 @@
       <file leaf-file-name="_config.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_config.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="602">
-              <caret line="74" column="34" lean-forward="false" selection-start-line="74" selection-start-column="34" selection-end-line="74" selection-end-column="34" />
+            <state relative-caret-position="504">
+              <caret line="70" column="16" lean-forward="true" selection-start-line="70" selection-start-column="16" selection-end-line="70" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -53,10 +53,9 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="411" />
-    <option name="y" value="208" />
-    <option name="width" value="1400" />
-    <option name="height" value="1000" />
+    <option name="x" value="960" />
+    <option name="width" value="960" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -126,12 +125,12 @@
       <updated>1523371474016</updated>
       <workItem from="1523371475941" duration="24000" />
       <workItem from="1523450793706" duration="1168000" />
-      <workItem from="1523456135529" duration="1930000" />
+      <workItem from="1523456135529" duration="2027000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3122000" />
+    <option name="totallyTimeSpent" value="3219000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="960" y="0" width="960" height="1080" extended-state="7" />
@@ -175,18 +174,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="602">
-          <caret line="74" column="34" lean-forward="false" selection-start-line="74" selection-start-column="34" selection-end-line="74" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.git/config">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="70" column="16" lean-forward="true" selection-start-line="70" selection-start-column="16" selection-end-line="70" selection-end-column="16" />
           <folding />
         </state>
       </provider>
