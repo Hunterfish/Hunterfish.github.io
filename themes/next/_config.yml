@@ -45,7 +45,7 @@ rss:
 footer:
   # Specify the date when the site was setup.
   # If not defined, current year will be used.
-  #since: 2015
+  since: 2017
 
   # Icon between year and copyright info.
   icon: user
@@ -153,8 +153,9 @@ links_icon: link
 links_title: Links
 links_layout: block
 #links_layout: inline
-#links:
-  #Title: http://example.com/
+links:
+  李彦宏: http://www.baidu.com
+  马云: http://taobao.com/
 
 # Sidebar Avatar
 # in theme directory(source/images): /images/avatar.gif
