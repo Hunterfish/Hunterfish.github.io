@@ -3,8 +3,8 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle:
+title: 技术驿站
+subtitle: 在这里歇会吧
 description: stay hungry! stay foolish!
 keywords:
 author: 咸鱼翻面
@@ -79,9 +79,14 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:Hunterfish/Hunterfish.github.io.git
-  branch: master
+  repo:
+      github: git@github.com:Hunterfish/Hunterfish.github.io.git,master
+      coding: git@git.coding.net:hunterfish/hunterfish.coding.me.git,master
 admin:
   username: hunterfish
   password_hash: $2a$10$R41CaWybq3k1RF35afQVg.VdeDpfOKKQfqyzxRXCl3C4u5/VTXx82
   secret: your admin password
+  deployCommand: './admin_script/hexo-generate.sh'
+search:
+  path: search.xml
+  field: post
