@@ -6,18 +6,22 @@ tags:
   - 杂谈
 date: 2018-04-17 09:48:40
 ---
-Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [documentation](https://hexo.io/docs/) for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting](https://hexo.io/docs/troubleshooting.html) or you can ask me on [GitHub](https://github.com/hexojs/hexo/issues).
 
+# 我的博客搭建
 
-### Run server
+## 前言 
 
-``` bash
-$ hexo server
-```
+	通过一年的学习，最近想搭建一个博客网站，一是可以记录自己的学习历程，二是可以总结学习知识。
+
+## 技术选择
+	hexo,github,git,hexo-admin,node.js,npm
+
+## 搭建流程
+### 学习hexo
 ```java
-class Demo {
-	public static void main(String args[]) {
-    System.out.println("hello Java!");
+class Demo {  
+	public static void main(String args[]){  
+    System.out.println("hello Java!");  
    }
 }
 ```
