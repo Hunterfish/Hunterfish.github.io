@@ -1,14 +1,16 @@
 title: mysql统计一段时间内每天数据情况
-date: 2018-04-18 17:14:01
 categories: 工作日志
-tags: 
-    - mysql
+tags:
+  - mysql
+date: 2018-04-18 17:14:01
 ---
 #  mysql if语法
 
 ##  项目需求
 
 后台项目要统计游戏模块每天新增人数，新增体力值数量以及占总体力值百分比，显示效果如下图所示：
+
+![图片](/images/game_highcharts.png)
 ##  sql语句
 sql语句如下：
 ```sql
