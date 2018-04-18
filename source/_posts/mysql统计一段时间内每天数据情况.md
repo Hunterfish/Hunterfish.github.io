@@ -78,6 +78,7 @@ mybatis,xml语句如下：
 1,ifnull(,)在使用GROUP By后不起作用，参考资料：<https://blog.csdn.net/galenowow/article/details/79258748>
 2,mysql生成一段时间内的连续天数日期，参考资料：
 <https://www.jianshu.com/p/a63526962139>  
+<https://www.cnblogs.com/dennyzhangdd/p/8073181.html>  
 注意：limit作用是连续天数的个数，不能超过查询表的记录条数！
 
 参考资料:<https://blog.csdn.net/touatou/article/details/77045740>
