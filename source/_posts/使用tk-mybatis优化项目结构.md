@@ -10,6 +10,8 @@ date: 2018-04-19 16:19:01
 ##  tk.mybatis介绍  
 * tk.mybatis是一款强大的MyBatis插件，合理使用会帮你除去大量的mybatis中的mapper.mxl文件里重复的sql语句；
 * Spring Boot中已经整合了tk.mybatis插件，使用起来非常方便  
+* [Mybatis官方文档地址](http://www.mybatis.tk/)  
+* [框架介绍链接](https://blog.csdn.net/shikaiwencn/article/details/52485883)
 
 ```xml
 <!-- 通用插件 mapper  -->
