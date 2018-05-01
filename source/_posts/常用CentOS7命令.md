@@ -21,3 +21,19 @@ firewall-cmd --permanent --zone=public --add-port=3306/udp
 ```java
 firewall-cmd --reload  
 ```  
+
+## 查看进程和端口监听  
+
+* 检查后台进程是否正在运行  
+
+```java
+ps -ef | grep redis  
+```  
+
+* 检测端口是否在监听  
+
+```java
+netstat -lntp | grep 6379
+```  
+
+

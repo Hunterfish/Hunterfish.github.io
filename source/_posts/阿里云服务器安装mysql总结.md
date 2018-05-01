@@ -4,7 +4,7 @@ date: 2018-04-27 14:37:52
 categories: 阿里云服务器
 tags: 
   - mysql
-  - 阿里云
+  - linux
 ---
 # 阿里云服务器安装mysql总结  
 
