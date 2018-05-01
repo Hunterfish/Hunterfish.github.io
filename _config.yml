@@ -80,8 +80,8 @@ theme: next
 deploy:
   type: git
   repo:
-      github: git@github.com:Hunterfish/Hunterfish.github.io.git,master
-      coding: git@git.coding.net:hunterfish/hunterfish.coding.me.git,master
+      github: ssh://git@github.com:Hunterfish/Hunterfish.github.io.git,master
+      coding: ssh://git@git.coding.net:hunterfish/hunterfish.coding.me.git,master
 admin:
   username: hunterfish
   password_hash: $2a$10$R41CaWybq3k1RF35afQVg.VdeDpfOKKQfqyzxRXCl3C4u5/VTXx82
