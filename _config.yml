@@ -78,10 +78,13 @@ theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git
-  repo:
-      github: ssh://git@github.com:Hunterfish/Hunterfish.github.io.git,master
-      coding: ssh://git@git.coding.net:hunterfish/hunterfish.coding.me.git,master
+  - type: git
+    repo: git@github.com:Hunterfish/Hunterfish.github.io.git
+    branch: master
+  - type: git
+    repo: git@git.coding.net:hunterfish/hunterfish.coding.me.git
+    branch: master
+
 admin:
   username: hunterfish
   password_hash: $2a$10$R41CaWybq3k1RF35afQVg.VdeDpfOKKQfqyzxRXCl3C4u5/VTXx82
