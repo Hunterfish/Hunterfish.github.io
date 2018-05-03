@@ -100,10 +100,20 @@ tags:
 
 # 分布式session实战  
 
-> 新建springboot项目，[点击访问项目地址](https://gitee.com/ddebug/session)  
+> 新建spring boot项目，[点击访问项目地址](https://gitee.com/ddebug/session)  
 > 功能：实现卖家端微信扫码登陆功能。  
 
-## sql语句  
+## 微信公众平台测试账号  
+
+> 参考链接：<https://blog.csdn.net/antma/article/details/79629584>  
+
+> 有关代码基本上和上面参考链接一样，部分需要修改！  
+
+* 微信服务验证接口  
+
+
+
+## sql语句<MySql>    
 
 ```sql
 -- 用户(登录后台使用, 用户登录可直接采用微信扫码登录，不使用账号密码)
@@ -120,6 +130,37 @@ create table `seller_info` (
 
 ## 后台代码  
 
+* pom.xml  
+
+> 新增mysql、jpa、lombok、weixin-java-mp、thymeleaf依赖  
+```xml
+<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+</dependency>
+
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-data-jpa</artifactId>
+</dependency>
+
+<dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+</dependency>
+
+<dependency>
+    <groupId>com.github.binarywang</groupId>
+    <artifactId>weixin-java-mp</artifactId>
+    <version>2.7.0</version>
+</dependency>
+
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-thymeleaf</artifactId>
+</dependency>
+```
+
 * 实体类  
 
 ```java
@@ -129,11 +170,8 @@ public class UserInfo {
 
     @Id
     private String sellerId;
-
     private String username;
-
     private String password;
-
     private String openid;
 }
 ```
@@ -178,8 +216,16 @@ public class UserInfoServiceImpl implements UserInfoService {
 
 ```
 
+* 
+
 * controller层  
 
 ```java
 
 ```
+
+## 微信授权登陆  
+
+
+
+
