@@ -100,10 +100,324 @@ tags:
 
 # 分布式session实战  
 
-> 新建springboot项目，[点击访问项目地址](https://gitee.com/ddebug/session)  
+> 新建spring boot项目，[点击访问项目地址](https://gitee.com/ddebug/session)  
 > 功能：实现卖家端微信扫码登陆功能。  
 
-## sql语句  
+## SpringBoot整合微信公众平台测试账号授权登陆  
+
+> 参考链接：<https://blog.csdn.net/antma/article/details/79629584>  
+
+> 有关代码基本上和上面参考链接一样，部分需要修改！  
+
+### 代码部分  
+
+* application.yml：添加微信配置信息  
+
+```yaml
+wechat:
+  # 公众平台测试账号
+  appId: xxxx
+  appSecret: xxxxx
+```
+
+* WechatAccountConfig：读取application.yml配置信息  
+
+```java
+@Data
+@Component
+@ConfigurationProperties(prefix = "wechat")
+public class WechatAccountConfig {
+
+    /** 公众平台测试id */
+    private String appId;
+    /** 公众平台测试密钥 */
+    private String appSecret;
+}
+```
+
+* WeChatConfig.java：配置WxMpService Bean   
+
+> **weixin-java-mp**是[**weixin-java-tools**](https://gitee.com/binary/weixin-java-tools)开发工具包（SDK）的一部分
+
+```java
+@Component
+public class WechatConfig {
+
+    @Autowired
+    private WechatAccountConfig accountConfig;
+
+    @Bean
+    public WxMpService wxService() {
+        WxMpService wxservice = new WxMpServiceImpl();
+        wxservice.setWxMpConfigStorage(wxConfigStorate());
+        return wxservice;
+    }
+
+    @Bean
+    public WxMpConfigStorage wxConfigStorate() {
+        WxMpInMemoryConfigStorage wxMpInMemoryConfigStorage = new WxMpInMemoryConfigStorage();
+        wxMpInMemoryConfigStorage.setAppId(accountConfig.getAppId());
+        wxMpInMemoryConfigStorage.setSecret(accountConfig.getAppSecret());
+        return wxMpInMemoryConfigStorage;
+    }
+}
+```
+
+* LoginController：微信服务请求验证接口（测试账号的url和token验证）  
+
+> 下面注释掉的java代码也可以，实际上并没有使用CheckUtil和SHA1工具类验证token  
+
+```java
+@Controller
+public class LoginController {
+
+    @GetMapping(value = "portal")
+    public void login(HttpServletRequest request, HttpServletResponse response){
+        System.out.println("success");
+        String signature = request.getParameter("signature");
+        String timestamp = request.getParameter("timestamp");
+        String nonce = request.getParameter("nonce");
+        String echostr = request.getParameter("echostr");
+        PrintWriter out = null;
+        try {
+            out = response.getWriter();
+            if(CheckUtil.checkSignature(signature, timestamp, nonce)){
+                out.append(echostr);
+                out.flush();
+            }
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }finally{
+            out.close();
+        }
+        // 不知道下面没有验证token，但是也可以成功
+        /*String signature = request.getParameter("signature");
+        String timestamp = request.getParameter("timestamp");
+        String nonce = request.getParameter("nonce");
+        String echostr = request.getParameter("echostr");
+        System.out.println("signature:" + signature);
+        System.out.println("timestamp:" + timestamp);
+        System.out.println("nonce:" + nonce);
+        System.out.println("echostr:" + echostr);
+        try {
+            PrintWriter pw = response.getWriter();
+            pw.append(echostr);
+            pw.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+    }
+}
+```
+
+* CheckUtil：微信请求校验工具类  
+
+```java
+public class CheckUtil {
+
+    private static final String token = "hunterfish";
+    public static boolean checkSignature(String signature,String timestamp,String nonce){
+        String[] str = new String[]{token,timestamp,nonce};
+        //排序
+        Arrays.sort(str);
+        //拼接字符串
+        StringBuffer buffer = new StringBuffer();
+        for(int i =0 ;i<str.length;i++){
+            buffer.append(str[i]);
+        }
+        //进行sha1加密
+        String temp = SHA1.encode(buffer.toString());
+        //与微信提供的signature进行匹对
+        return signature.equals(temp);
+    }
+}
+```
+
+* SHA1：sha1加密  
+
+```java
+public class SHA1 {
+
+    private static final char[] HEX_DIGITS = {'0', '1', '2', '3', '4', '5',
+            '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
+
+    /**
+     * Takes the raw bytes from the digest and formats them correct.
+     *
+     * @param bytes the raw bytes from the digest.
+     * @return the formatted bytes.
+     */
+    private static String getFormattedText(byte[] bytes) {
+        int len = bytes.length;
+        StringBuilder buf = new StringBuilder(len * 2);
+        // 把密文转换成十六进制的字符串形式
+        for (int j = 0; j < len; j++) {
+            buf.append(HEX_DIGITS[(bytes[j] >> 4) & 0x0f]);
+            buf.append(HEX_DIGITS[bytes[j] & 0x0f]);
+        }
+        return buf.toString();
+    }
+
+    public static String encode(String str) {
+        if (str == null) {
+            return null;
+        }
+        try {
+            MessageDigest messageDigest = MessageDigest.getInstance("SHA1");
+            messageDigest.update(str.getBytes());
+            return getFormattedText(messageDigest.digest());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+}
+```
+
+* WeChatController：访问微信服务器获取code和access_token、openId等
+
+```java
+@Slf4j
+@Controller
+public class WechatController {
+
+    @Autowired
+    private WxMpService wxMpService;
+
+    /** 
+     * 功能描述: 微信授权
+     * <p>
+     * 作者: luohongquan
+     * 日期: 2018/5/3 0003 15:12
+     */
+    @GetMapping("/authorize")
+    public String qrAuthorize(@RequestParam("returnUrl") String returnUrl) {
+        String url = "https://c901e3dd.ngrok.io/session/userInfo";
+        String redirectURL = wxMpService.oauth2buildAuthorizationUrl(url, WxConsts.OAUTH2_SCOPE_USER_INFO, URLEncoder.encode(returnUrl));
+        log.info("【微信网页授权】获取code，redirectURL={}", redirectURL);
+        return "redirect:" + redirectURL;
+    }
+
+    /** 
+     * 功能描述: 获取openId
+     * <p>
+     * 作者: luohongquan
+     * 日期: 2018/5/3 0003 15:12
+     */
+    @GetMapping("/userInfo")
+    public String qrUserInfo(@RequestParam("code") String code,
+                             @RequestParam("state") String returnUrl) {
+        log.info("【微信网页授权】code={}", code);
+        log.info("【微信网页授权】state={}", returnUrl);
+        WxMpOAuth2AccessToken wxMpOAuth2AccessToken = new WxMpOAuth2AccessToken();
+        try {
+            wxMpOAuth2AccessToken = wxMpService.oauth2getAccessToken(code);
+        } catch (WxErrorException e) {
+            log.error("【微信网页授权】{}", e);
+            e.printStackTrace();
+        }
+
+        String openId = wxMpOAuth2AccessToken.getOpenId();
+        log.info("【微信网页授权】openId={}", openId);
+        return "redirect:" + returnUrl + "?openid=" + openId;
+    }
+
+    /** 
+     * 功能描述: 首页
+     * <p>
+     * 作者: luohongquan
+     * 日期: 2018/5/3 0003 14:54
+     */
+    @GetMapping("/")
+    public String index() {
+        return "index";
+    }
+
+    /** 
+     * 功能描述: 登陆页面
+     * <p>
+     * 作者: luohongquan
+     * 日期: 2018/5/3 0003 14:54
+     */
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+}
+```
+
+* index.html：访问路径"http://hunterfish.ngrok.xiaomiqiu.cn/session/"，项目登陆后首页  
+
+> 前端页面简单的使用Thymeleaf完成     
+
+```html
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>首页</title>
+</head>
+<body>
+<h1>Hello World!</h1>
+</body>
+</html>
+```
+
+* login.html：访问路径"http://hunterfish.ngrok.xiaomiqiu.cn/session/"，项目登陆页面  
+
+```html
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>微信公众平台测试号网页授权</title>
+</head>
+<body>
+<h1>授权页面</h1>
+<div style="font-size: 64px">
+    <a href="index.html" th:href="@{/authorize(returnUrl='https://hunterfish.ngrok.xiaomiqiu.cn/session/')}">微信登录</a>
+</div>
+</body>
+</html>
+```
+
+### 运行测试  
+
+**1. 接口配置信息验证**    
+
+> URL：http://hunterfish.ngrok.xiaomiqiu.cn/session/portal（中间使用ngrok内网穿透域名）
+Token：随便写，与LoginController的"/portal"接口中的token验证保持一致（实际中我测试不需要验证也能成功）  
+
+![图片](/images/weixin1.png)
+
+**2. 进入登陆页面**   
+
+> 使用[微信开发工具](https://developers.weixin.qq.com/miniprogram/dev/devtools/devtools.html)，方便快捷；
+登陆URL：http://hunterfish.ngrok.xiaomiqiu.cn/session/login  
+
+![图片](/images/weixin2.png)
+
+**3. 点击"微信登陆"**  
+
+> 根据前面html页面可知，点击登陆的url链接：https://hunterfish.ngrok.xiaomiqiu.cn/session/authorize?returnUrl=https://hunterfish.ngrok.xiaomiqiu.cn/session/
+
+```html
+<div style="font-size: 64px">
+    <a href="index.html" th:href="@{/authorize(returnUrl='https://hunterfish.ngrok.xiaomiqiu.cn/session/')}">微信登录</a>
+</div>
+```
+![图片](/images/weixin3.png)
+
+**4. 点击"确认登录"**  
+
+> 此时，执行"/userInfo"接口，并携带了第三步访问"/authorize"接口的获取的Code等参数；
+最终授权成功后，跳转到第一步登陆时携带的链接：http://hunterfish.ngrok.xiaomiqiu.cn/session/（index.html)。  
+  
+![图片](/images/weixin4.png)
+
+## 登陆用户代码  
+
+### sql语句<MySql>    
 
 ```sql
 -- 用户(登录后台使用, 用户登录可直接采用微信扫码登录，不使用账号密码)
@@ -118,7 +432,38 @@ create table `seller_info` (
 ) comment '用户信息表';
 ```
 
-## 后台代码  
+### 后台代码  
+
+* pom.xml  
+
+> 新增mysql、jpa、lombok、weixin-java-mp、thymeleaf依赖  
+```xml
+<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+</dependency>
+
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-data-jpa</artifactId>
+</dependency>
+
+<dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+</dependency>
+
+<dependency>
+    <groupId>com.github.binarywang</groupId>
+    <artifactId>weixin-java-mp</artifactId>
+    <version>2.7.0</version>
+</dependency>
+
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-thymeleaf</artifactId>
+</dependency>
+```
 
 * 实体类  
 
@@ -129,11 +474,8 @@ public class UserInfo {
 
     @Id
     private String sellerId;
-
     private String username;
-
     private String password;
-
     private String openid;
 }
 ```
@@ -178,8 +520,6 @@ public class UserInfoServiceImpl implements UserInfoService {
 
 ```
 
-* controller层  
 
-```java
 
-```
+
