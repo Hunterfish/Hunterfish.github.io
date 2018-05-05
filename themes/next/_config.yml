@@ -377,9 +377,9 @@ disqus:
 
 # changyan
 changyan:
-  enable: false
-  appid:
-  appkey:
+  enable: true
+  appid: cytBatcJ1
+  appkey: 21816cae9b6cf06d7d970433e6499961
 
 
 # Valine.
