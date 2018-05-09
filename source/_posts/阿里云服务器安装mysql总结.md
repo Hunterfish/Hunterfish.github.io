@@ -3,8 +3,8 @@ title: 阿里云服务器安装mysql总结
 date: 2018-04-27 14:37:52
 categories: 阿里云服务器
 tags: 
-  - mysql
-  - linux
+  - MySQL
+  - Linux
 ---
 # 阿里云服务器安装mysql总结  
 

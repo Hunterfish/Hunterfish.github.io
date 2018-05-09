@@ -1,10 +1,11 @@
 ---
 title: 分布式系统和分布式session
 date: 2018-05-02 15:38:42
-categories: 分布式
+categories: Spring Boot微信点餐项目
 tags:
   - 分布式
   - session
+  - Spring Boot
 ---
 # 分布式系统  
 

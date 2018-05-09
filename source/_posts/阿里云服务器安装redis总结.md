@@ -3,8 +3,8 @@ title: 阿里云服务器安装redis总结
 date: 2018-05-01 15:18:20
 categories: 阿里云服务器
 tags:
-  - linux
-  - redis
+  - Linux
+  - Redis
 ---
 
 # 在阿里云服务器上安装Redis数据库  

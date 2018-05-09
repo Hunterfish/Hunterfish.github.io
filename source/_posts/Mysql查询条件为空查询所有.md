@@ -2,7 +2,7 @@ title: Mysql查询条件为空查询所有
 author: 咸鱼翻面
 date: 2018-04-17 10:53:56
 tags:
-  - mysql
+  - MySQL
 categories: 工作日志
 ---
 #  mysql if语法

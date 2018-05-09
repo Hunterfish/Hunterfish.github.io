@@ -1,10 +1,10 @@
 ---
 title: 使用websocket推送消息
 date: 2018-05-08 17:07:59
-categories: spring boot微信点餐项目
+categories: Spring Boot微信点餐项目
 tags:
-  - websocket
-  - spring boot
+  - WebSocket
+  - Spring Boot
 ---
 
 # websocket推送消息  

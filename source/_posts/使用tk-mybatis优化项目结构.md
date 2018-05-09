@@ -1,8 +1,8 @@
 title: 使用tk.mybatis优化Spring Boot项目
 categories: 工作日志
 tags:
-  - mybatis
-  - spring boot
+  - MyBatis
+  - Spring Boot
 date: 2018-04-19 16:19:01
 ---
 #  Spring Boot项目中整合tk.mybatis通用插件  

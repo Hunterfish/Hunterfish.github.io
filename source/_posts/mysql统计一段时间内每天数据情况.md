@@ -1,7 +1,7 @@
 title: mysql统计一段时间内每天数据情况
 categories: 工作日志
 tags:
-  - mysql
+  - MySQL
 date: 2018-05-02 12:14:01
 ---
 ##  项目需求  
