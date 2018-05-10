@@ -94,7 +94,7 @@ tags:
 ```
 * 通知音乐文件：可以[点击](http://developer.baidu.com/vcast)自定义自己想要的提示音！    
 
-![图片](/images/websocket1.png)
+![](http://p8hqd7oln.bkt.clouddn.com/18-5-10/8132712.jpg)
 
 * WebSocketConfig.java：websocket配置类，生成Bean  
 
@@ -189,16 +189,17 @@ public class WebSocket {
 
 > 当进入或刷新订单页面后，websocket产生连接  
 
-![图片](/images/websocket3.png)  
-![图片](/images/websocket4.png)  
+![](http://p8hqd7oln.bkt.clouddn.com/18-5-10/68865724.jpg)
+![](http://p8hqd7oln.bkt.clouddn.com/18-5-10/84939282.jpg)
 
 * postman发送生成订单请求：  
 
-![图片](/images/websocket2.png)  
+![](http://p8hqd7oln.bkt.clouddn.com/18-5-10/90026970.jpg)
 
 * 发送请求后：  
 
-![图片](/images/websocket5.png)  
-![图片](/images/websocket6.png)  
+![](http://p8hqd7oln.bkt.clouddn.com/18-5-10/67965777.jpg)
+![](http://p8hqd7oln.bkt.clouddn.com/18-5-10/54531158.jpg)
+
 
 

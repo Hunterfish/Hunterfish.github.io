@@ -8,7 +8,7 @@ date: 2018-05-02 12:14:01
 
 后台项目要统计游戏模块每天新增人数，新增体力值数量以及占总体力值百分比，显示效果如下图所示：
 
-![图片](/images/game_highcharts.png)
+![](http://p8hqd7oln.bkt.clouddn.com/18-5-10/37035734.jpg)
 ##  sql语句
 sql语句如下：
 ```sql

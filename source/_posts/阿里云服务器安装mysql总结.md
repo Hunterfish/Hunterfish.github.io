@@ -47,6 +47,6 @@ tags:
   
 原因是阿里云服务器设置了安全组规则，只允许22和3389端口开放，所以新增3306安全组规则：  
 
-![图片](/images/aliyun-mysql.png)  
+![](http://p8hqd7oln.bkt.clouddn.com/18-5-10/4855161.jpg)
 
 参考资料：<https://blog.csdn.net/u010955892/article/details/72774920>

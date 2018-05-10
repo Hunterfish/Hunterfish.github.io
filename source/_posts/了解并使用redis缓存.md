@@ -112,13 +112,13 @@ http://hunterfish.ngrok.xiaomiqiu.cn/sell/buyer/product/list
 
 > 访问后，会在断点处停止；    
 
-![图片](/images/redis_cache1.png)  
+![](http://p8hqd7oln.bkt.clouddn.com/18-5-10/11466847.jpg)
 
 * 再次访问上面链接  
 
 > 发现不会经过断点，测试已经从redis缓存中获取数据了  
 
-![图片](/images/redis_cache2.png)  
+![](http://p8hqd7oln.bkt.clouddn.com/18-5-10/66300248.jpg)
 
 ### 问题  
 
@@ -174,7 +174,7 @@ http://hunterfish.ngrok.xiaomiqiu.cn/sell/buyer/product/list
 
 > @CacheConfig、@Cacheable、@CachePut  
 
-![图片](/images/redis_cache3.png)  
+![](http://p8hqd7oln.bkt.clouddn.com/18-5-10/99533631.jpg)
 
 ## 使用condition、unless   
 

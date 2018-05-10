@@ -53,7 +53,7 @@ tags:
 
 * 客户端请求服务端时，服务端通过setCookie在http请求头中设置key：JSESSIONID和对应的value值；  
 
-![图片](/images/sessionId.png)  
+![](http://p8hqd7oln.bkt.clouddn.com/18-5-10/14850270.jpg)
 
 * 客户端Cookie会保存在本地，后续的请求都会自动带上  
 
@@ -70,7 +70,7 @@ tags:
 
 * 用户请求通过nginx到达tomcat，tomcat部署了一个应用，此时，session保存在tomcat应用的内存中，  
 
-![图片](/images/session1.png)  
+![](http://p8hqd7oln.bkt.clouddn.com/18-5-10/52761962.jpg)
 
 * 后来用户使用人数激增，一个tomcat扛不住了，然后增加机器，部署多个Tomcat；  
 
@@ -81,7 +81,7 @@ tags:
 
 > 接着配置nginx，通过访问不同的url访问不同的负载均衡到不同的服务器上去，减轻单台服务器压力。
 
-![图片](/images/session2.png)  
+![](http://p8hqd7oln.bkt.clouddn.com/18-5-10/72984668.jpg)
 
 * 无论是水平扩展还是垂直拆分扩展，都会引出session的问题：  
 > 1，比如用户第一次进来访问的是A1服务器，此时A1持有用户的session；  
@@ -94,7 +94,7 @@ tags:
 
 * 创建单独的服务保存session信息，其他的服务都从该服务获取session信息；  、
 * 通常用Redis集群或主从复制实现；  
-![图片](/images/session3.png)
+![](http://p8hqd7oln.bkt.clouddn.com/18-5-10/71123749.jpg)
 * 这样无论是集群还是分布式服务都能从该服务中根据用户id获取唯一的session信息了；  
 > 登陆：设置key，保存value（sesion信息）；  
 > 登出：使该session信息失效。  
@@ -389,14 +389,14 @@ public class WechatController {
 > URL：http://hunterfish.ngrok.xiaomiqiu.cn/session/portal（中间使用ngrok内网穿透域名）
 Token：随便写，与LoginController的"/portal"接口中的token验证保持一致（实际中我测试不需要验证也能成功）  
 
-![图片](/images/weixin1.png)
+![](http://p8hqd7oln.bkt.clouddn.com/18-5-10/78053565.jpg)
 
 **2. 进入登陆页面**   
 
 > 使用[微信开发工具](https://developers.weixin.qq.com/miniprogram/dev/devtools/devtools.html)，方便快捷；
 登陆URL：http://hunterfish.ngrok.xiaomiqiu.cn/session/login  
 
-![图片](/images/weixin2.png)
+![](http://p8hqd7oln.bkt.clouddn.com/18-5-10/40775360.jpg)
 
 **3. 点击"微信登陆"**  
 
@@ -407,14 +407,14 @@ Token：随便写，与LoginController的"/portal"接口中的token验证保持�
     <a href="index.html" th:href="@{/authorize(returnUrl='https://hunterfish.ngrok.xiaomiqiu.cn/session/')}">微信登录</a>
 </div>
 ```
-![图片](/images/weixin3.png)
+![](http://p8hqd7oln.bkt.clouddn.com/18-5-10/78982621.jpg)
 
 **4. 点击"确认登录"**  
 
 > 此时，执行"/userInfo"接口，并携带了第三步访问"/authorize"接口的获取的Code等参数；
 最终授权成功后，跳转到第一步登陆时携带的链接：http://hunterfish.ngrok.xiaomiqiu.cn/session/（index.html)。  
   
-![图片](/images/weixin4.png)
+![](http://p8hqd7oln.bkt.clouddn.com/18-5-10/62033396.jpg)
 
 ## 登陆用户代码  
 
