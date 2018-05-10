@@ -5,6 +5,7 @@ categories: 阿里云服务器
 tags:
   - Linux
   - Redis
+  - 阿里云服务器
 ---
 
 # 在阿里云服务器上安装Redis数据库  

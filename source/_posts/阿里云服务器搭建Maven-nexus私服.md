@@ -7,6 +7,7 @@ tags:
   - JDK
   - Nexus3
   - Linux
+  - 阿里云服务器
 ---
 
 # 在阿里云服务器上搭建Maven私服  

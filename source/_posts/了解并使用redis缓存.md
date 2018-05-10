@@ -178,11 +178,15 @@ http://hunterfish.ngrok.xiaomiqiu.cn/sell/buyer/product/list
 
 ## 使用condition、unless   
 
-1. **key="#sellerId"**: [spel表达式](https://blog.csdn.net/ya_1249463314/article/details/68484422)，获取接口参数的值  
+1. **key="#sellerId"**  
+> [spel表达式](https://blog.csdn.net/ya_1249463314/article/details/68484422)，获取接口参数的值  
 
-2. **condition="#sellerId.length() > 3**: 判断条件，当请求参数sellerId的长度大于3时，才缓存返回结果ResultVO  
+2. **condition="#sellerId.length() > 3"**  
+> 判断条件，当请求参数sellerId的长度大于3时，才缓存返回结果ResultVO  
 
-3. **unless="#result.getCode() != 0"**: unless是"如果不"的意思,即当返回结果ResultVO的code为0时，执行缓存  
+3. **unless="#result.getCode() != 0"**  
+> unless是"如果不"的意思,即当返回结果ResultVO的code为0时，执行缓存  
 
-4. 测试链接：http://127.0.0.1:8080/sell/buyer/product/list?sellerId=123457  
+4. 测试URL  
+> http://127.0.0.1:8080/sell/buyer/product/list?sellerId=123457  
 

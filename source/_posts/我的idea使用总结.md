@@ -12,12 +12,12 @@ tags:
 
 * Ctrl+Shift+s：生成序列化ID **serialVersionUID**  
 
-![图片](/images/serializable3.png)   
+![图片](http://p8hqd7oln.bkt.clouddn.com/18-5-10/30770183.jpg)
 
 ## idea插件安装  
 
-![图片](/images/serializable1.png)  
+![图片](http://p8hqd7oln.bkt.clouddn.com/18-5-10/97346624.jpg)
 
 ## 插件设置快捷键  
 
-![图片](/images/serializable2.png)  
+![图片](http://p8hqd7oln.bkt.clouddn.com/18-5-10/66397016.jpg)

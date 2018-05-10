@@ -5,6 +5,7 @@ categories: 阿里云服务器
 tags: 
   - MySQL
   - Linux
+  - 阿里云服务器
 ---
 # 阿里云服务器安装mysql总结  
 
