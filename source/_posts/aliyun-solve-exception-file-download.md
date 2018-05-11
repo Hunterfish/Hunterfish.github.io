@@ -20,7 +20,7 @@ tags:
 * 谷歌后，应该是通过redis获取了root权限，上传了病毒  
 * 会大量占用cpu资源，造成服务器卡顿  
 
-![](1)  
+![](http://p8hqd7oln.bkt.clouddn.com/18-5-11/47499542.jpg) 
 
 # 解决方法  
 

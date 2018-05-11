@@ -16,7 +16,8 @@ timezone:
 url: https://www.ddebug.cn
 root: /
 #permalink: :year/:month/:day/:title/
-permalink: :posts/:category/:year-:month-:day-:title.html
+#permalink: :posts/:category/:year-:month-:day-:title.html
+permalink: :title.html
 permalink_defaults:
 
 # Directory

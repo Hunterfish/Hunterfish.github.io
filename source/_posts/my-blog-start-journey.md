@@ -32,7 +32,11 @@ date: 2018-04-17 09:48:40
 * 6、 **[Hexo-admin 哈希值密码创建](http://lxj-life.com/2017/08/08/Hexo%E6%8F%92%E4%BB%B6-admin/)**  
 * 7、 **[将Hexo部署到阿里云主机VPS](https://blog.csdn.net/fjinhao/article/details/77096951)**  
 * 8、 **[博客极简图床+七牛云](https://www.jianshu.com/p/7cbd50058ea3)**  
-* 9、 **[解决谷歌百度收录问题](https://www.cnblogs.com/tengj/p/5357879.html)**  
+* 9、 **[解决谷歌百度收录问题](https://www.cnblogs.com/tengj/p/5357879.html)**   
+
+### 优化  
+* 1、 **[Hexo高阶教程各种优化]**(https://blog.csdn.net/sunshine940326/article/details/70936988)  
+* 2、 **[Hexo定制&优化]**(https://www.jianshu.com/p/3884e5cb63e5)
 
 ## 操作流程  
 * 1 [我的博客项目](https://github.com/Hunterfish/Hunterfish.github.io)分支情况：  
@@ -50,7 +54,9 @@ git add source
 git commit -m "XX"
 git push origin hexo
 hexo clean
-hexo d -g   // //push更新完分支之后将自己写的博客对接到自己搭的博客网站上，同时同步了Github中的master
+hexo g
+gulp build  // gulp插件，优化静态文件
+hexo d      // //push更新完分支之后将自己写的博客对接到自己搭的博客网站上，同时同步了Github中的master
 ```  
 ## 遇到问题  
 
