@@ -51,5 +51,11 @@ redis2.x 只需要 bind 0.0.0.0，并开放防火墙端口即可外网访问；�
 ```java
 # redis-cli // 进入redis命令行模式  
 xxxx:6379> CONFIG SET protected-mode no // 禁用防护模式 
-```  
+```
+
+## 阿里云Redis漏洞  
+
+![](http://p8hqd7oln.bkt.clouddn.com/18-5-18/56531317.jpg)
+
+参考[Redis未授权访问详解](http://www.freebuf.com/column/158065.html)
 

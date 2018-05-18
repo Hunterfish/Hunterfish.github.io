@@ -38,7 +38,7 @@ tags:
 
 ### 代码内容  
 
-> 实体类和页面展示类需要实现序列化，可参考[我的idea使用总结](https://www.ddebug.cn/2018/05/09/我的idea使用总结/)  
+> 实体类和页面展示类需要实现序列化，可参考[我的idea使用总结](https://www.ddebug.cn/my-idea-summary.html)  
 
 * SellApplication.java   
 

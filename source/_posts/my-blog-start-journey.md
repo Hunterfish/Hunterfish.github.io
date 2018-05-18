@@ -37,6 +37,7 @@ date: 2018-04-17 09:48:40
 ### 优化  
 * 1、 **[Hexo高阶教程各种优化]**(https://blog.csdn.net/sunshine940326/article/details/70936988)  
 * 2、 **[Hexo定制&优化]**(https://www.jianshu.com/p/3884e5cb63e5)
+* 3、 **[为Hexo博客标题自动添加序号：hexo-heading-index](http://r12f.com/posts/adding-index-to-your-headings-with-hexo-heading-index/)  
 
 ## 操作流程  
 * 1 [我的博客项目](https://github.com/Hunterfish/Hunterfish.github.io)分支情况：  

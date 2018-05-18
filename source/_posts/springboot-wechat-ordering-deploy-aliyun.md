@@ -39,7 +39,7 @@ mvn clean package -Dmaven.test.skip=true
 ![](http://p8hqd7oln.bkt.clouddn.com/18-5-10/74412635.jpg)
 
 3. copy到服务器  
-> 可以参考博客[常用CentOS7命令](https://www.ddebug.cn/2018/04/29/%E5%B8%B8%E7%94%A8CentOS7%E5%91%BD%E4%BB%A4/)  
+> 可以参考博客[常用CentOS7命令](https://www.ddebug.cn/common-centos7-commands.html)  
 
 4. 运行  
 ```jshelllanguage
