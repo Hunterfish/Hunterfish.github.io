@@ -35,9 +35,10 @@ date: 2018-04-17 09:48:40
 * 9、 **[解决谷歌百度收录问题](https://www.cnblogs.com/tengj/p/5357879.html)**   
 
 ### 优化  
-* 1、 **[Hexo高阶教程各种优化]**(https://blog.csdn.net/sunshine940326/article/details/70936988)  
-* 2、 **[Hexo定制&优化]**(https://www.jianshu.com/p/3884e5cb63e5)
-* 3、 **[为Hexo博客标题自动添加序号：hexo-heading-index](http://r12f.com/posts/adding-index-to-your-headings-with-hexo-heading-index/)  
+* 1、 **[Hexo高阶教程各种优化](https://blog.csdn.net/sunshine940326/article/details/70936988)**  
+* 2、 **[Hexo定制&优化](https://www.jianshu.com/p/3884e5cb63e5)**
+* 3、 **[为Hexo博客标题自动添加序号：hexo-heading-index](http://r12f.com/posts/adding-index-to-your-headings-with-hexo-heading-index/)**  
+* 4、 **[hexo的next主题个性化配置教程](https://segmentfault.com/a/1190000009544924)**  
 
 ## 操作流程  
 * 1 [我的博客项目](https://github.com/Hunterfish/Hunterfish.github.io)分支情况：  
@@ -46,6 +47,10 @@ date: 2018-04-17 09:48:40
 * 2 在新的电脑端clone远程仓库hexo分支到本地
     > git clone -b hexo git@github.com:yourname/yourname.github.io.git
 * 3 初始化并新建博客部署  
+
+``
+http://localhost:8080/goods
+``
 
 ```Shell
 cd yourname.github.io
