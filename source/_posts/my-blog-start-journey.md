@@ -4,13 +4,13 @@ tags:
   - 杂谈
 date: 2018-04-17 09:48:40
 ---
-# 我的博客搭建
+# 我的博客搭建  
 
-## 前言 
+## 前言  
 通过一年的学习，最近想搭建一个博客网站，一是可以记录自己的学习历程，二是可以总结学习知识。  
 最后最不重要的一点就是可以装B了！
 
-## 技术选择
+## 技术选择  
 > hexo, github, git, hexo-admin, node.js, npm
 
 ## 搭建流程  
@@ -45,14 +45,12 @@ date: 2018-04-17 09:48:40
     > master分支：部署博客（存放部署后静态页面文件）的分支
     > hexo分支：我们可以clone到其他电脑或其他系统的hexo源文件的分支，而且我们已经将它设置成默认仓库
 * 2 在新的电脑端clone远程仓库hexo分支到本地
-    > git clone -b hexo git@github.com:yourname/yourname.github.io.git
-* 3 初始化并新建博客部署  
+    > git clone -b hexo git@github.com:yourname/yourname.github.io.git  
 
-``
-http://localhost:8080/goods
-``
+* 3 初始化并新建博客部署   
 
-```Shell
+```java
+npm install hexo-cli -g     // 全局安装hexo
 cd yourname.github.io
 npm install
 hexo new post "new blog name" // 新建一个.md文件，你可以编辑博客内容
@@ -63,7 +61,7 @@ hexo clean
 hexo g
 gulp build  // gulp插件，优化静态文件
 hexo d      // //push更新完分支之后将自己写的博客对接到自己搭的博客网站上，同时同步了Github中的master
-```  
+```
 ## 遇到问题  
 
 * 1、 **hexo s -d 启动后，但是访问<http://localhost:4000>一直无法访问**  
