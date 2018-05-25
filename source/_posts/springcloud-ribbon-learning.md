@@ -16,12 +16,42 @@ SpringCloud的**客户端负载均衡**就是**Ribbon**组件，它是基于**Ne
 
 > Spring Cloud在结合了Ribbon的负载均衡实现中，封装增加了HttpClient和OkHttp两种请求端实现，默认使用了Ribbon对Eureka服务发现的负载均衡client。  
 
-* RestTemplate 
-在[Spring Cloud Feign--应用通信](https://www.ddebug.cn/springcloud-application-communication) 一文中我们介绍了服务间通信RestTemplate的三种使用方式；  
-通过添加@LoadBalanced注解或者直接同@AutoWired注入LoadBalancerClient，其实就是试用了Ribbon的组件；  
-> 添加@LoadBalanced注解后，Ribbon会通过LoadBalancerClient自动的帮助你基于某种规则，比如简单的轮询、随机等去连接目标服务，从而很容易使用Ribbon实现服务的负载均衡算法。
+* **RestTemplate** 
+在[Spring Cloud Feign--应用通信](https://www.ddebug.cn/springcloud-feign-learning.html) 一文中我们介绍了服务间通信RestTemplate的三种使用方式；  
+通过添加@LoadBalanced注解或者直接@AutoWired注入LoadBalancerClient，其实就是试用了Ribbon的组件；  
+> 添加@LoadBalanced注解后，Ribbon会通过LoadBalancerClient自动的帮助你基于某种规则，比如简单的轮询、随机连接等去连接目标服务，从而很容易使用Ribbon实现服务的负载均衡算法。
 
-* Feign  
+* **Feign**  
+* **Zuul**  
 
-* Zuul  
+## Ribbon核心  
+
+Ribbon实现负载均衡，核心有三点：  
+
+* **服务发现**  
+> 发现依赖服务的列表，通俗讲，依据服务的名字，把该服务所有的实例都找出来  
+
+* **服务选择规则**  
+> 依据规则策略（轮询、随机），如何从多个服务找到有效的服务  
+
+* **服务监听**  
+> 检测失效的服务，做到高效剔除  
+
+## Ribbon主要组件  
+
+> 整体流程：首先通过ServerList来获取所有的可用服务列表，然后通过ServerListFilter过滤掉一部分地址，最后剩下的地址中通过IRule选择一个实例作为最终目标结果。
+
+* **ServerList**  
+* **Rule**  
+* **ServerListFilter**  
+
+# 源码分析  
+
+[深入理解Ribbon之源码解析](https://blog.csdn.net/forezp/article/details/74820899)  
+
+
+
+
+
+
 

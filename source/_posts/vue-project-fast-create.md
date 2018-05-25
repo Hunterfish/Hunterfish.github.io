@@ -41,17 +41,17 @@ npm run dev
 
 ## Vue特点  
 
-* [Vue官方地址](https://cn.vuejs.org/)  
-* 前后端分离的开发思想，调用后端提供的JSON接口，没有任何耦合；  
-* 开发环境完全分离，开发完成后可以分别部署到两个不同的服务器运行。
+1、 [Vue官方地址](https://cn.vuejs.org/)  
+2、 前后端分离的开发思想，调用后端提供的JSON接口，没有任何耦合；  
+3、 开发环境完全分离，开发完成后可以分别部署到两个不同的服务器运行。
 
 ## 参考资料  
 
 > 参考的博客非常丰富，基础环境Node.js等搭建、Vue项目初始化流程都有    
 
-* [Vue2+VueRouter2+webpack 构建项目实战](https://blog.csdn.net/fungleo/article/details/53171052)
-* [Vue2项目构建心得](https://www.jianshu.com/p/87a4fe7bf0b1)
-* [手摸手，带你用vue撸后台系列](https://segmentfault.com/a/1190000009275424)  
+1、 [Vue2+VueRouter2+webpack 构建项目实战](https://blog.csdn.net/fungleo/article/details/53171052)
+2、 [Vue2项目构建心得](https://www.jianshu.com/p/87a4fe7bf0b1)
+3、 [手摸手，带你用vue撸后台系列](https://segmentfault.com/a/1190000009275424)  
 
 # Vue项目快速创建  
 
