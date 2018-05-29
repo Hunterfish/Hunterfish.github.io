@@ -35,11 +35,32 @@ tags:
 
 ## mysql 用户设置  
 
-* root用户禁止远程访问  
+* root用户禁止远程访问   密码：L***1!
 * 普通用户：hunterfish 密码：1****0
 * 管理员用户：admin 密码：1****9
 
 ## 遇到的问题  
+
+### mysql5.7初始化密码问题  
+
+按照上面参考链接教程安装，如果是mysql5.7的话，使用mysql访问会出现下面错误：  
+
+```xml
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: NO)
+```
+这是因为mysql从5.6开始后，安装初始化密码就不为空了，下面更改密码：  
+
+1. 查看初始化密码  
+
+```xml
+grep 'temporary password' /var/log/mysqld.log
+```
+![](http://p8hqd7oln.bkt.clouddn.com/18-5-29/90859158.jpg)
+
+2. 更改初始化密码  
+![](http://p8hqd7oln.bkt.clouddn.com/18-5-29/85681101.jpg)
+
+### 3306端口  
 
 顺利执行上面参考链接的安装流程后，在本地远程连接阿里云mysql数据库时（防火墙已经开放了3306d端口），遇到：
 

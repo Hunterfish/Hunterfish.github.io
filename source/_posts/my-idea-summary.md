@@ -26,6 +26,10 @@ tags:
 
 参考[修改 Idea 终端 Terminal 为 GitBash 或 Cmder](https://segmentfault.com/a/1190000012717033); 修改为gitbash比较好，Cmder存在中文乱码问题  
 
+# 常用快捷键  
+
+1. [Intellij IDEA神器居然还有这些小技巧](https://blog.csdn.net/linsongbin1/article/details/80211919)  
+
 
 
 
