@@ -136,16 +136,22 @@ tags:
 2. 上面的**build配置信息**放到web子模块的pom.xml中   
 > 因为web子模块已经成为了主模块，拥有启动类**DemoApplication.java**  
 
+3. 安装依赖子模块的jar包到本地maven仓库   
 
+```java
+mvn -Dmaven.test.skip=true -U clean install
+```
 
-3. 构建打包命令：  
+4. 构建打包命令：  
 > -u: 更新第三方包   
+
 ```java
 mvn -Dmaven.test.skip -u clean package
 ```
 ![](http://p8hqd7oln.bkt.clouddn.com/18-5-26/41532244.jpg)
 
 4. jar包启动命令：  
+
 ```xml
 java -jar xxx.jar
 ```
@@ -205,3 +211,76 @@ mvn -Dmaven.test.skip -u clean install
 ```java
 mvn spring-boot:run
 ```
+
+# Spring Cloud点餐项目多模块化  
+
+> 重点是暴露远程服务的接口定义在客户端Product，比如Order服务调用Product服务的查询商品、减库存服务。  
+> 这么做的好处是，自己定义的接口，暴露出去给别人用，便于使用和修改，如果后面还有支付系统需要使用Product的服务，不需要重新再支付系统中再写一遍了！！  
+
+## Product服务  
+
+### 多模块化分析  
+
+* **product-server**： 所有业务逻辑  
+* **product-clent**： 对外暴露的接口  
+* **product-common**： 公用的对象（被外部服务调用，也会被内部其他模块使用）  
+
+### 多模块依赖关系  
+
+![](1)
+
+### 效果  
+![](2)
+
+## Order服务  
+
+和Product服务一样，不在分析  
+
+## 注意事项  
+
+### server子模块   
+
+**ProductApplication.java**、**OrderApplication.java**要放在**server**子模块中！！  
+
+1. 启动类  
+![](3)
+
+2. server.pom  
+> **build**配置文件从主项目中移到server.pom中  
+
+```xml
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+        </plugin>
+    </plugins>
+</build>
+```
+
+### 引入依赖子模块common  
+
+> product-common子模块被内部其他模块**product-client**使用;  
+> 也可能被外部服务**order**的内部子模块**order-server**使用； 
+
+1. 首先在**product**、**order**主pom.xml文件中引入：  
+![](4)
+
+2. 内部模块**product-client**使用：  
+![](5)
+
+3. 外部项目服务**order**使用：  
+
+> 和内部使用一样，但首先把**product**子模块**client**、**common**安装到本地仓库  
+```jshelllanguage
+mvn -Dmaven.skip.test=true -U clean install
+```
+
+
+
+
+
+
+
+
