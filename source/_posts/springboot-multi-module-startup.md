@@ -227,10 +227,10 @@ mvn spring-boot:run
 
 ### 多模块依赖关系  
 
-![](1)
+![](http://p8hqd7oln.bkt.clouddn.com/18-5-30/51260546.jpg)
 
 ### 效果  
-![](2)
+![](http://p8hqd7oln.bkt.clouddn.com/18-5-30/84154162.jpg)
 
 ## Order服务  
 
@@ -243,7 +243,7 @@ mvn spring-boot:run
 **ProductApplication.java**、**OrderApplication.java**要放在**server**子模块中！！  
 
 1. 启动类  
-![](3)
+![](http://p8hqd7oln.bkt.clouddn.com/18-5-30/6652656.jpg)
 
 2. server.pom  
 > **build**配置文件从主项目中移到server.pom中  
@@ -265,10 +265,10 @@ mvn spring-boot:run
 > 也可能被外部服务**order**的内部子模块**order-server**使用； 
 
 1. 首先在**product**、**order**主pom.xml文件中引入：  
-![](4)
+![](http://p8hqd7oln.bkt.clouddn.com/18-5-30/82243249.jpg)
 
 2. 内部模块**product-client**使用：  
-![](5)
+![](http://p8hqd7oln.bkt.clouddn.com/18-5-30/75110005.jpg)
 
 3. 外部项目服务**order**使用：  
 
