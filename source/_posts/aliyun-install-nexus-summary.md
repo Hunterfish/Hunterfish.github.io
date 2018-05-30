@@ -21,6 +21,12 @@ tags:
 
 ## 安装流程  
 
+### git安装  
+
+参考链接：<https://www.cnblogs.com/boxuan/articles/6434109.html>  
+
+> 执行``make configure``等命令时，会报错，缺少包，百度搜一下安装即可。  
+
 ### JDK安装  
 
 参考链接：<https://blog.csdn.net/fuyuwei2015/article/details/73195936>  
