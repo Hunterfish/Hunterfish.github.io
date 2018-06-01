@@ -39,11 +39,38 @@ tags:
 > 再通俗讲，比如**用户服务**购买商品后，业务上还要给用户加积分，发短信，此时，**订单服务**不需要修改，**短信服务**和**积分服务**只要也订阅了消息， 
 相应的积分、短信就可以实现。 
 
+# RabbitMQ   
+
 ## 消息中间件的选择  
 
 * **RabbitMQ**  
 * **Kafka**  
 * **ActiveMQ**   
+
+## RabbitMQ安装  
+
+在Docker中安装RabbitMQ，Docker可以参考[微服务、容器Docker和DevOps](https://www.ddebug.cn/springcloud-docker-devops.html#more)。  
+
+### 下载  
+
+1. [官网下载地址](https://hub.docker.com/_/rabbitmq/)  
+2. 注意事项  
+![](http://p8hqd7oln.bkt.clouddn.com/18-5-31/84358853.jpg)
+
+### 安装  
+
+1. docker命令： 
+```bash
+docker run -d --hostname my-rabbit -p 5672:5672 -p 15672:15672 rabbitmq:3.7.5-management
+```
+![](http://p8hqd7oln.bkt.clouddn.com/18-5-31/38308950.jpg)
+
+2. docker ps查看  
+
+3. 访问管理界面<http://localhost:15672>  
+![](http://p8hqd7oln.bkt.clouddn.com/18-5-31/13026009.jpg)
+
+
 
 # 订单/商品同步改为异步消息调用  
 

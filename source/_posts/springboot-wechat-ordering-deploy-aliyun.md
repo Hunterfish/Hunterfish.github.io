@@ -13,7 +13,12 @@ tags:
 
 > Spring Boot项目  
 
-* 点击[项目地址](https://gitee.com/ddebug/sell.git)下载项目到本地  
+* 点击[项目地址](https://gitee.com/ddebug/sell.git)下载项目到本地     
+
+* 本地手动下载pom.xml依赖  
+```jshelllanguage
+copy mvn -f pom.xml dependency:copy-dependencies
+```
 
 ## 项目部署  
 
