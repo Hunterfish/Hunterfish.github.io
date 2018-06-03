@@ -143,7 +143,7 @@ eureka:
 2. **尝试访问**<http://localhost:8080/order-a.properties>、<http://localhost:8080/order-a.json>  
 > 发现返回相应格式的配置文件  
 
-![](http://p8hqd7oln.bkt.clouddn.com/18-6-1/68979852.jpg)
+![](http://p8hqd7oln.bkt.clouddn.com/18-6-1/68979852.jpg)  
 ![](http://p8hqd7oln.bkt.clouddn.com/18-6-1/6924783.jpg)
 
 3. **远程git仓库[config-repos](https://gitee.com/ddebug/config-repos)新建order-dev.yml、order-test.yml**  

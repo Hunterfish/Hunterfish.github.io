@@ -17,7 +17,7 @@ tags:
 
 * 本地手动下载pom.xml依赖  
 ```jshelllanguage
-copy mvn -f pom.xml dependency:copy-dependencies
+call mvn -f pom.xml dependency:copy-dependencies
 ```
 
 ## 项目部署  

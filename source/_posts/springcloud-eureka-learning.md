@@ -8,6 +8,8 @@ tags:
 ---
 # 了解服务注册发现  
 
+参考博客[SpringCloud学习1-服务注册与发现(Eureka)](https://www.cnblogs.com/woshimrf/p/springclout-eureka.html)  
+
 ## 分布式系统中为什么需要服务发现？  
 
 1. 只有两个服务，他们都有自己的地址   

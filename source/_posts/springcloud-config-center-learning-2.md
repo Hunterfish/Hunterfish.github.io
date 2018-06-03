@@ -20,15 +20,44 @@ tags:
 
 ![](http://p8hqd7oln.bkt.clouddn.com/18-6-1/30523127.jpg)
 
-## 在项目中配置  
+## 添加Bus组件    
 
-### boot cloud版本更改  
+### 版本更改  
+
+> 测试，M3版本下报错，config微服务修改版本号  
 
 依赖|旧版本|新版本  
 -|-|-|    
-Spring Boot|2.0.0.M3|2.0.0.RELEASE  
-Spring Cloud|Finchley.M2|Finchley.BUILD-SNAPSHOT 
+Spring Boot|2.0.0.M3|2.0.0.BUILD-SNAPSHOT  
+Spring Cloud|Finchley.M2|Finchley.BUILD-SNAPSHOT  
 
-### config-server项目  
+### config-server   
 
 1. pom.xml  
+> 引入bus依赖  
+
+```xml
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-bus-amqp</artifactId>
+</dependency>
+```
+
+### config客户端-Order服务  
+
+1. 修改版本，见上；  
+> 版本升级后，feign组件名称需要修改  
+
+
+2. pom.xml【server子模块】  
+> 引入bus依赖  
+```xml
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-bus-amqp</artifactId>
+</dependency>
+```
+
+  
+  
+  
