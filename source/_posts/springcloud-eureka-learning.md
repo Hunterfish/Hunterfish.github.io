@@ -1,5 +1,5 @@
 ---
-title: Spring Cloud Eureka--服务注册发现
+title: Spring Cloud 实战 (二)：Eureka--服务注册发现
 date: 2018-05-13 10:59:09
 categories: Spring Cloud微服务实战
 tags:

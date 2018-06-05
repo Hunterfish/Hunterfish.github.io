@@ -1,4 +1,4 @@
-title: Spring Cloud Feign--应用通信
+title: Spring Cloud 实战 (四)：Feign--应用通信
 categories:
   - Spring Cloud微服务实战
 tags:

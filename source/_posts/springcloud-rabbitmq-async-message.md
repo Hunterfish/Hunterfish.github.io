@@ -1,5 +1,5 @@
 ---
-title: 使用RabbitMQ实现服务间异步消息调用
+title: Spring Cloud 实战 (七)：使用RabbitMQ实现服务间异步消息调用
 date: 2018-05-30 13:20:34
 categories: Spring Cloud微服务实战
 tags:

@@ -1,5 +1,5 @@
 ---
-title: Spring Boot多模块化运行方式
+title: Spring Cloud 实战 (六)：Spring Boot多模块化
 date: 2018-05-28 13:09:23
 categories: Spring Cloud微服务实战
 tags:

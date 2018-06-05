@@ -1,5 +1,5 @@
 ---
-title: SpringCloud统一配置中心组件——config(1)
+title: Spring Cloud 实战 (九)：config--统一配置中心组件
 date: 2018-05-31 10:23:34
 categories: Spring Cloud微服务实战
 tags:
@@ -13,14 +13,14 @@ tags:
 
 ## 为什么需要统一配置中心  
 
-1. 不方便维护  
+1. **不方便维护**  
 > 解决多个开发人员对配置文件修改，冲突不利于维护  
 
-2. 配置内容安全与权限  
+2. **配置内容安全与权限**  
 > 主要是针对线上配置来说。  
 > 一个公司线上项目的配置文件不会对开发人员公开，特别是敏感内容比如数据库密码等等，只有管理者或运维才能知道；  
 
-3. 更新配置项目需要重启  
+3. **更新配置项目需要重启**  
 > 线上更新文案或限制，比如短信验证码一天错误限制，可能需要修改；  
 > SpringCloud config组件能做到  
 
@@ -33,7 +33,22 @@ tags:
 
 # 实战config-server服务  
 
-[个人码云私有项目地址](https://gitee.com/ddebug/config-repo)   
+[个人码云私有项目地址](https://gitee.com/ddebug/config-repo)  
+
+## 统一版本  
+
+一开始使用SpringBoot【2.0.0.M3】、SpringCloud【Finchley.M2】经常出现错误，无法查询远传git配置文件信息；  
+
+```xml
+
+```
+所以统一SpringBoot和SpringCloud版本，以免以后太多坑！！  
+> eureka、config、order、product、都修改下面新版本  
+
+依赖|旧版本|新版本  
+-|-|-|    
+Spring Boot|2.0.0.M3|2.0.1.RELEASE    
+Spring Cloud|Finchley.M2|Finchley.RC1  
 
 ## config-server端  
 
@@ -45,24 +60,26 @@ tags:
 ![](http://p8hqd7oln.bkt.clouddn.com/18-6-1/71443228.jpg)
 
 2. **版本号**  
+> 修改为上面版本号  
 
-> 确保版本号一致，否则报错信息不好处理！！  
+### 初始化为Eureka-Client   
 
-依赖|版本号  
--|-|  
-Spring Boot|2.0.0.M3  
-Spring Cloud|Finchley.M2  
+1. **pom.xml**  
+> 引入``spring-cloud-starter-netflix-eureka-client``依赖  
 
-![](http://p8hqd7oln.bkt.clouddn.com/18-6-1/74263447.jpg)
+```xml
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+</dependency>
+```
 
-### 初始化项目
-
-1. ConfigApplication.java  
-> 因为config项目本身也是一个服务，所以添加注解``@EnableDiscoveryClient``  
+2. **ConfigApplication.java**   
+> SpringCloud【Finchley.RC1】版本已经不需要注解``@EnableDiscoveryClient``  
 
 ```java
 @SpringBootApplication
-@EnableDiscoveryClient
+// @EnableDiscoveryClient
 public class ConfigApplication {
 
 	public static void main(String[] args) {
@@ -70,7 +87,7 @@ public class ConfigApplication {
 	}
 }
 ```
-2. application.yml  
+3. **application.yml**  
 
 ```yaml
 spring:
@@ -82,19 +99,30 @@ eureka:
       defaultZone: http://localhost:8761/eureka/ 
 ```
 
-3. 启动eureka，启动config，访问<http://localhost:8761/>  
+4. **启动eureka，启动config，访问<http://localhost:8761/>**  
+
 ![](http://p8hqd7oln.bkt.clouddn.com/18-6-1/41307372.jpg)
 
-### 初始化成config-server    
+### 初始化成Config-Server  
 
-1. ConfigApplication.java  
-> 添加注解``@@EnableConfigServer``  
+1. **pom.xml**  
+> 引入依赖``spring-cloud-config-server``  
 
-2. 新建远程git仓库  
+```xml
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-config-server</artifactId>
+</dependency>
+```
+
+2. **ConfigApplication.java**   
+> 在**上一节基础上**添加注解``@@EnableConfigServer``  
+
+2. **新建远程git仓库**   
 > 可以在码云上创建  
 ![](http://p8hqd7oln.bkt.clouddn.com/18-6-1/18705545.jpg)
 
-3. application.yml  
+3. **application.yml**   
 > 配置远程仓库地址  
 
 ```yaml
@@ -114,13 +142,15 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
 ```
 
-4. 重新启动项目，访问<http://localhost:8080/order-a.yml>   
-> 访问格式下面会将为何如此写！  
+4. **重新启动项目，访问<http://localhost:8080/order-a.yml>**   
+> 下小节讲解上述访问URL如何定义的！！   
+
 ![](http://p8hqd7oln.bkt.clouddn.com/18-6-1/15155589.jpg)
 
-### 理解配置中心访问url路径规则    
+### 配置中心访问url路径规则  
 
-1. **当config项目启动后，控制台中心，你可以看到** 
+1. **当config项目启动后，控制台中心，你可以看到**  
+
 ![](http://p8hqd7oln.bkt.clouddn.com/18-6-1/11667827.jpg)  
 
 ```yaml
@@ -134,13 +164,12 @@ eureka:
 /{label}/{name}-{profiles}.json
 /{name}/{profile}/{label}/**
 /{name}/{profile}/{label}/**
-
-{name}通常使用微服务名称，对应Git仓库中文件名的前缀；
-{profile}对应{name}-后面的dev、pro、test等；
-{label}对应Git仓库的分支名，默认为master。
 ```
+> ``{name}``：通常使用微服务名称，对应Git仓库中文件名的前缀；     
+> ``{profile}``：对应{name}-后面的dev、pro、test等；  
+> ``{label}``：对应Git仓库的分支名，默认为master。  
 
-2. **尝试访问**<http://localhost:8080/order-a.properties>、<http://localhost:8080/order-a.json>  
+2. **访问**<http://localhost:8080/order-a.properties>、<http://localhost:8080/order-a.json>  
 > 发现返回相应格式的配置文件  
 
 ![](http://p8hqd7oln.bkt.clouddn.com/18-6-1/68979852.jpg)  
@@ -160,7 +189,7 @@ eureka:
 ![](http://p8hqd7oln.bkt.clouddn.com/18-6-1/12228473.jpg)
 
 6. **常用方式**   
-> 看需求，都可以  
+> 看需求，都可以，经常使用下面两种格式了    
 
 ```yaml
 /{name}-{profiles}.properties
@@ -181,7 +210,7 @@ eureka:
 
 2. **application.yml**添加位置配置   
 > 出于项目安全，特别是线上，配置文件放到指定目录;  
-> 添加路径**basedir**  
+> 添加配置``basedir``  
 
 ```yaml
 spring:
@@ -193,7 +222,7 @@ spring:
         git:
           uri: https://gitee.com/ddebug/config-repo
           username: ddebug
-          password: lhq19931201
+          password: ***********
           # 配置到项目下，也可以配置到其他路径
           basedir: E:\springcloudservice\config\basedir
 eureka:
@@ -202,40 +231,84 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
 ```
 
-3. **重新访问**<http://localhost:8080/release/order-dev.yml>   
+3. **重新访问<http://localhost:8080/release/order-dev.yml>**   
 
 ![](http://p8hqd7oln.bkt.clouddn.com/18-6-1/88213574.jpg)
 
-## config-client端：order服务  
+## config-client端：order  
 
-### order修改为config客户端    
+### order初始化为config-client      
 
-1. **server子模块pom.xml引入依赖**   
+1. **pom.xml**   
+> server子模块pom.xml引入依赖``spring-cloud-starter-config``  
+> 因为**order**即是Eureka-client，也是Config-Client，下面依赖都不可少  
 
 ```xml
 <dependency>
     <groupId>org.springframework.cloud</groupId>
-    <artifactId>spring-cloud-config-client</artifactId>
+    <artifactId>spring-cloud-starter-config</artifactId>
 </dependency>
-```
-
-2. **注意：修改feign版本为``2.0.0.M1``，否则报错**  
-
-参考地址：<https://coding.imooc.com/learn/questiondetail/49125.html>  
-```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+</dependency>
 <dependency>
     <groupId>org.springframework.cloud</groupId>
-    <artifactId>spring-cloud-starter-feign</artifactId>
-    <version>2.0.0.M1</version>
+    <artifactId>spring-cloud-starter-openfeign</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 </dependency>
 ```
 
-3. **application.yml修改为bootstrap.yml**  
-> springboot特性，如果不修改，不能从远端git中读物配置文件了  
+2. **application.yml**  
 
-4. **OrderApplication.java**不需要修改  
+```yaml
+spring:
+  application:
+    name: order
+server:
+  port: 8081
+```
 
-5. **新建EnvController.java**，测试是否拿到配置文件：  
+3. **bootstrap.yml**  
+> **特别注意**：与 Spring Cloud Config 相关的属性必须配置在 bootstrap.yml 中，config 部分内容才能被正确加载。因为 config 的相关配置会先于 application.yml，而 bootstrap.yml 的加载也是先于 application.yml。  
+
+```yaml
+spring:
+  cloud:
+    config:
+      name: order
+      profile: dev
+      lable: master
+      discovery:
+        enabled: true   # 开启config服务发现支持
+        service-id: config   # config：Config-Server端服务名  
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+```
+
+4. **OrderApplication.java**   
+> 删除注解``@EnableDiscoveryClient``  
+
+```java
+@SpringBootApplication
+// @EnableDiscoveryClient
+@EnableFeignClients(basePackages = ("cn.hunter.product.client"))
+public class OrderApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(OrderApplication.class, args);
+	}
+}
+```
+
+5. **EnvController.java**  
+> 测试是否从config中获取配置文件的配置信息  
+  
 ```java
 @RestController
 @RequestMapping("/env")
@@ -250,18 +323,20 @@ public class EnvController {
     }
 }
 ```
-6. **访问<http://localhost:8080/env/print>**  
-> 你也可以测试``test``  
+6. **访问<http://localhost:8080/env/print>**   
+> 启动eureka、config、order服务  
+> 测试修改order的bootstrap.yml``profile``为``test``，测试能够获取    
 
 ![](http://p8hqd7oln.bkt.clouddn.com/18-6-1/50923784.jpg)
 
-### 配置中心高可用  
+### 配置中心config高可用   
 
-1. **config**配置中心微服务启动多个实例``-Dserver.port=9002``  
+1. **config** 配置中心微服务启动多个实例``-Dserver.port=9002``  
 ![](http://p8hqd7oln.bkt.clouddn.com/18-6-1/73732896.jpg)
 
-2. **多次启动order**微服务  
+2. **多次启动 order** 微服务  
 > 可以发现每一次启动可能会从不同地址的config-server读取配置文件  
+
 ![](http://p8hqd7oln.bkt.clouddn.com/18-6-1/8165937.jpg)
 
 ###  总结配置文件  
