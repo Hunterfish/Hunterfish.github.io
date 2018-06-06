@@ -181,7 +181,11 @@ public class EnvController {
 
 ### 测试  
 
-首先启动docker中的rabbitmq，参考之前博客[使用RabbitMQ实现服务间异步消息调用](https://www.ddebug.cn/springcloud-rabbitmq-async-message.html#more)  
+首先启动docker中的rabbitmq，参考之前博客[Spring Cloud 实战 (七)：使用RabbitMQ实现服务间异步消息调用](https://www.ddebug.cn/springcloud-rabbitmq-async-message.html#more)    
+
+```jshelllanguage
+docker run -d --hostname my-rabbit -p 5672:5672 -p 15672:15672 rabbitmq:3.7.5-management
+```
 
 1. **启动服务**  
 > 分别启动 **eureka**、**config**、和两个 **order**  
