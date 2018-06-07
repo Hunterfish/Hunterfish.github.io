@@ -12,7 +12,7 @@ tags:
 
 ## 下载  
 
-1. [官网下载地址](https://hub.docker.com/_/rabbitmq/)  
+1. [Docker版本官网下载地址](https://hub.docker.com/_/rabbitmq/)  
 2. **注意事项**    
 ![](http://p8hqd7oln.bkt.clouddn.com/18-5-31/84358853.jpg)
 
