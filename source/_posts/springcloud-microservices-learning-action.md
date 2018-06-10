@@ -5,6 +5,11 @@ categories: Spring Cloud微服务实战
 tags:
   - Spring Cloud
 ---
+学习期间参考了大神博客：
+1. [springCloud Finchley 从入门到精通实战系列](https://segmentfault.com/blog/spring-cloud)  
+2. [Spring Cloud 学习 【Finchley版】](https://windmt.com/tags/Spring-Cloud/page/2/)  
+3. [Spring Cloud 2 Finchley.M9 概览](https://www.jianshu.com/p/c52b1089ea92)  
+
 # 微服务架构简介  
 
 > 微服务是一种架构风格，她不是某种组件或某种框架；比如我们熟悉的RESTful，也是一种架构风格；  
