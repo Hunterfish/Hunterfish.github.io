@@ -6,6 +6,8 @@ tags:
   - idea
 ---
 
+参考[IntelliJ IDEA 使用教程](http://wiki.jikexueyuan.com/project/intellij-idea-tutorial/)  
+
 # 序列化插件  
 
 ## 效果  

@@ -1,5 +1,5 @@
 ---
-title: Spring Cloud 实战 (十二)：Hystrix--服务容错
+title: Spring Cloud 实战 (十三)：Hystrix--服务容错
 date: 2018-06-10 10:42:59
 categories: Spring Cloud微服务实战
 tags:

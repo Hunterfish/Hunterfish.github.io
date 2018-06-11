@@ -1,11 +1,11 @@
 ---
-title: Spring Cloud 实战 (十二)：Zuul--服务网关
+title: Spring Cloud 实战 (十二)：Zuul--服务网关 (1)
 date: 2018-06-07 13:45:40
 categories:
   - Spring Cloud微服务实战
 tags:
   - Spring Cloud
-  - Stream
+  - Zuul
 ---
 
 上一篇学习了 Spring Cloud 组件 ``Stream``和 RabbitMQ 结合异步通知发送消息；本篇介绍另一个组件``Zuul``：服务网关。  
