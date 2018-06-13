@@ -128,3 +128,23 @@ CREATE TABLE `groups_item` (
 > 拼团失败，更新团购状态，退回支付金额（微信，支付宝），推送消息。  
 
 4. 查看团购详情   
+
+# 表设计
+
+```sql
+DROP TABLE IF EXISTS `activity_publish`;
+CREATE TABLE `activity_publish` (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '活动ID',
+  `activity_number` VARCHAR(100) NOT NULL COMMENT '活动编号',
+  `activity_name` VARCHAR(100) NOT NULL COMMENT '活动名称',
+  `register_start_time` DATETIME DEFAULT NULL COMMENT '报名开始时间',
+  `register_end_time` DATETIME DEFAULT NULL COMMENT '报名结束时间',
+  `activity_start_time` DATETIME DEFAULT NULL COMMENT '活动开始时间',
+  `activity_end_time` DATETIME DEFAULT NULL COMMENT '活动结束时间',
+  `limited` DATETIME DEFAULT NULL COMMENT '限制付款时间<分钟>',
+  `activity_mode` tinyint NOT NULL DEFAULT 1 COMMENT '拼团方式 1-普通团 2-阶梯团 3-新增团',
+  `activity_explain` VARCHAR(255) COMMENT '活动说明',
+  `min_stock` 
+
+) ENGINE=INNODB DEFAULT CHARSET=utf8 COMMENT='活动招商发布表';
+```
