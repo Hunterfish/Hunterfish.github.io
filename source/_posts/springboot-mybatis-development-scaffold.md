@@ -13,14 +13,21 @@ tags:
 
 ## 项目地址  
 
-码云：[]()
+码云：[wechat-admin](https://gitee.com/ddebug/wechat-admin)  
 
-## 技术储备  
+> 注意：clone 后切换到 **tag标签**的``v1.0``版本，最原始的脚手架，可以在上面添加新增的业务代码。  
 
-* idea  
-* Spirng Boot
-* MyBatis
-* MySQL
+## 使用技术  
 
-## 搭建流程  
+* Spirng Boot  
+* MyBatis  
+* MySQL 5.7x  
+> 注意：不要使用**5.6及以下版本**，表设计时采用了时间字段交给mysql处理。低版本不支持。  
+
+* Druid  
+* 全局异常处理  
+* logback日志管理  
+
+
+
   

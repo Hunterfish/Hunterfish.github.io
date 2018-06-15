@@ -15,7 +15,23 @@ tags:
 
 ## github项目  
 
-1. [litemall【Spring Boot后端 + Vue管理员前端 + 微信小程序用户前端】](https://github.com/linlinjava/litemall)  
+1. [litemall【Spring Boot后端 + Vue管理员前端 + 微信小程序用户前端】](https://github.com/linlinjava/litemall)   
+> 该项目有非常完善的开发部署文档：<https://linlinjava.gitbook.io/litemall>    
+
+2. [计生计](https://github.com/ximolang/mp-jishengji)  
+
+
+
+## wepy：微信小程序组件开发框架  
+
+1. github地址：[wepy](https://github.com/Tencent/wepy)  
+2. 组件汇总：[awesome-wepy](https://github.com/aben1188/awesome-wepy)  
+3. [省份/城市/区县定位选择器](https://gitee.com/qfr_bz/citySelector)  
+4. [微信小程序-日历](https://github.com/czcaiwj/calendar)  
+
+## mpvue：美团小程序开发框架  
+
+1. github地址：[mpvue](https://github.com/Meituan-Dianping/mpvue)
 
 ## 视频教程  
 
@@ -23,7 +39,11 @@ tags:
 
 ## 实现功能  
 
-日历上能够显示不同颜色，不同颜色代表你坚持的不同的事情。  
+日历上能够显示不同颜色，不同颜色代表你坚持的不同的事情。 
+### 项目名称  
+1. you can you up
+2. you will,you mast
+3.  
 
 ### 首页
 
@@ -52,5 +72,7 @@ tags:
 3. **前端：本地微信小程序**  
 
 4. **前端和后端联调**  
+
+## 
 
  
