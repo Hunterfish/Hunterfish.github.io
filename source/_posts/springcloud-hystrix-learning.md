@@ -16,7 +16,7 @@ tags:
 3. 如果 B 服务调用 C 服务由于某种原因失败，B 就会一直重试，**同步等待**会造成资源耗尽，结果 B 服务也不可用；  
 4. 而 A 调用已经不可用的 B，同时也会**同步等待**，最会 A、B、C 都不可用了，导致整个系统都不可用了！  
 
-![](1)
+![](http://p8hqd7oln.bkt.clouddn.com/18-6-17/89622682.jpg)
 
 ## Spring Cloud Hystrix  
 
@@ -98,11 +98,11 @@ public class HystrixController {
 5. **访问：<http://localhost:8082/getProductInfoList>**  
 > 访问成功，返回数据！  
 
-![](2)
+![](http://p8hqd7oln.bkt.clouddn.com/18-6-17/331310.jpg)
 
 6. 如果停掉``product``服务，再次访问 5 中 URL：
 
-![](3)
+![](http://p8hqd7oln.bkt.clouddn.com/18-6-17/15140993.jpg)
 
 ### 默认回退方法  
 
@@ -135,7 +135,7 @@ public class HystrixController {
 
 2. 在``product``服务停止情况下，访问：<http://localhost:8082/getProductInfoList>  
 
-![](4)
+![](http://p8hqd7oln.bkt.clouddn.com/18-6-17/89098486.jpg)
 
 ### 服务超时时间  
 
@@ -164,13 +164,13 @@ public List<ProductInfo> listForOrder(@RequestBody List<String> productIdList) {
 2. 启动``product``服务，访问：<http://localhost:8082/getProductInfoList>  
 > 从下面步骤3可知道，默认超时时间为1秒，所以``order``服务会执行**回退方法``。   
 
-![](5)
+![](http://p8hqd7oln.bkt.clouddn.com/18-6-17/49406597.jpg)
 
 3. 配置超时时间  
 > 休眠2秒，我们设置超时时间3秒；  
 > 配置``execution.isolation.thread.timeoutInMilliseconds``  
 
-![](6)
+![](http://p8hqd7oln.bkt.clouddn.com/18-6-17/7051304.jpg)
 
 ```java
 @RestController
@@ -203,7 +203,7 @@ public class HystrixController {
 4. 重新执行步骤2  
 > 成功返回数据！  
 
-![](7)
+![](http://p8hqd7oln.bkt.clouddn.com/18-6-17/92437976.jpg)
 
 ## 依赖隔离  
 
@@ -275,12 +275,12 @@ public class HystrixController {
 2. 访问：<http://localhost:8082/getProductInfoList?number=1>  
 > number=1 时，总是触发降级
 
-![](8)
+![](http://p8hqd7oln.bkt.clouddn.com/18-6-17/13374823.jpg)
 
 3. 访问：<http://localhost:8082/getProductInfoList?number=2>  
 > number=2 时，总是返回"success"  
 
-![](9)
+![](http://p8hqd7oln.bkt.clouddn.com/18-6-17/35952687.jpg)
 
 4. 不断刷新访问：<http://localhost:8082/getProductInfoList?number=1>  
 > 根据上面代码设置的``@HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "60")``，降级访问**60%**后  
@@ -288,7 +288,7 @@ public class HystrixController {
 5. 再访问：<http://localhost:8082/getProductInfoList?number=2>
 > 我们发现，number=2 时，也触发了降级  
 
-![](10)
+![](http://p8hqd7oln.bkt.clouddn.com/18-6-17/11743327.jpg)
 
 ### 断路器模式  
 
@@ -304,7 +304,7 @@ public class HystrixController {
 > 调用失败累计到达一定域值(或者一定比例)，就会启动熔断机制[open]，此时对服务都直接返回错误；  
 > 但设计了一个默认的**时钟选项**，到了这个时间后，就会进入**半熔断**状态，允许定量的服务请求，如果调用都成功或一定比例成功，则认为恢复了，就会关闭【close】熔断器；否则又回到【open】状态。
 
-![](11)
+![](http://p8hqd7oln.bkt.clouddn.com/18-6-17/43746997.jpg)
 
 #### 重要参数  
 
@@ -332,17 +332,271 @@ public class HystrixController {
 
 4. **circuitBreaker.errorThresholdPercentage**  
 > 设置断路器打开，启动服务熔断降级的错误百分比条件，表示在滚动时间窗口中，如果发生10次调用，其中有7次发生异常(70% > 60%)，断路器就会进入【open打开】状态，否则【closed关闭】状态。  
-> 
 
+### hystrix 参数配置文件化  
 
+之前都是在 java 方法上添加注解配置，不好管理，我们可以在``bootstrap.yml``配置文件里添加参数配置！  
 
+1. **bootstrap.yml**  
 
-## 监控 (Hystrix Dashboard)
+```yaml
+# hystrix服务熔断超时配置
+hystrix:
+  command:
+    default:  # default：默认，可以指定特定方法key
+      execution:
+        isolation:
+          thread:
+            timeoutInMillisenconds: 1000
+    getProductInfoList:
+          execution:
+            isolation:
+              thread:
+                timeoutInMillisenconds: 3000
+```
 
+2. **HystrixController.java**  
 
+```java
+@RestController
+@DefaultProperties(defaultFallback = "defaultFallback")
+public class HystrixController {
 
+    @GetMapping("/getProductInfoList")
+//    @HystrixCommand(fallbackMethod = "fallback")
+    // 超时配置
+//    @HystrixCommand(commandProperties = {
+//            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "3000")
+//    })
+    // 熔断机制
+    /*@HystrixCommand(commandProperties = {
+            @HystrixProperty(name = "circuitBreaker.enabled", value = "true"),  // 启动熔断
+            @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "10"),
+            @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "10000"),
+            @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "60"),
+    })*/
+    @HystrixCommand
+    public String getProductInfoList(@RequestParam("number") Integer number) {
+        // 如果偶数，请求直接返回成功
+        /*if (number % 2 == 0) {
+            return "success";
+        }*/
+        // 否则，请求 Product 服务
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.postForObject("http://127.0.0.1:8081/product/listForOrder",
+                Arrays.asList("157875196366160022"),
+                String.class);
+    }
+
+    private String fallback() {
+        return "太拥挤了，请稍后再试";
+    }
+
+    private String defaultFallback() {
+        return "默认提示：太拥挤了，请稍后再试~~";
+    }
+}
+```
+
+3. **访问： <http://localhost:8082/getProductInfoList?number=1>**  
+> 犹豫``product``服务里设置休眠 2 秒，所以此处会触发熔断降级，调用``defaultFallback()``方法。  
+
+## 使用 Feign Hystrix  
+
+因为熔断只是作用在服务调用这一端，比如``order``服务调用``product``服务。我们在``order``服务中开启 **feign.hystrix**。  
+
+### product 服务  
+
+1. **ProductClient.java**  
+> 注解 **FeignClient**：添加``fallback``参数；  
+> 创建**服务降级回调类**：**ProductClientFallback**；  
+
+```java
+@Component
+@FeignClient(
+        name = "product",
+        fallback = ProductClient.ProductClientFallback.class)
+public interface ProductClient {
+
+    @PostMapping("/product/listForOrder")
+    List<ProductInfoOutput> listForOrder(@RequestBody List<String> productIdList);
+
+    @PostMapping("/product/decreaseStock")
+    void decreaseStock(@RequestBody List<DecreaseStockInput> decreaseStockInputList);
+
+    /**  
+     * 功能描述: 服务降级回调类
+     * <p>
+     * 作者: luohongquan
+     * 日期: 2018/6/17 15:45
+     */
+    @Component  // 注解不要忘记
+    public static class ProductClientFallback implements ProductClient {
+
+        public ProductClientFallback() {
+        }
+        @Override
+        public List<ProductInfoOutput> listForOrder(List<String> productIdList) {
+            return null;
+        }
+        @Override
+        public void decreaseStock(List<DecreaseStockInput> decreaseStockInputList) {
+        }
+    }
+}
+```
+
+2. **mvn clean install -Dmaven.test.skip=true**  
+> 因为``order``服务会依赖``product``的 **feign client**服务模块``product-client``。  
+
+### order 服务  
+
+1. **bootstrap.yml**  
+
+```yaml
+# feign-hystrix的使用
+feign:
+  hystrix:
+    enabled: true
+```
+
+2. **OrderApplication.java**  
+> 添加注解 **@ComponentScan**，否则报错，找不到``order``服务中的服务降级回调类。  
+
+### 测试  
+
+1. **OrderServiceImpl.java**  
+> 在下面打断点，如果服务降级，执行自定义的回调函数，**productInfoList** 必为 **null**；  
+
+![](http://p8hqd7oln.bkt.clouddn.com/18-6-17/8215311.jpg)
+
+2. 启动``order``服务，访问**订单生成**服务；  
+> 不管``product``服务启动或停止，都执行了回调，**productInfoList** 为 **null**；  
+
+![](http://p8hqd7oln.bkt.clouddn.com/18-6-17/83623064.jpg)
+
+3. **bootstrap.yml**  
+> 注释掉上面的配置，重新启动order服务；  
+> 此时，``product``服务依然关闭，就不会执行回调方法。  
+
+![](http://p8hqd7oln.bkt.clouddn.com/18-6-17/8037604.jpg)
+
+## Hystrix 监控面板 (Hystrix Dashboard)
+
+hystrix的可视化组件！  
+参考博客：[Spring Cloud（五）：Hystrix 监控面板【Finchley 版】](https://windmt.com/2018/04/16/spring-cloud-5-hystrix-dashboard/)。  
+
+### 实战演练  
+
+``order``服务中。  
+
+1. **pom.xml**  
+> **order-server**； 
+> 依赖``spring-boot-starter-actuator``：监控模块以开启监控相关的端点。  
+
+```xml
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+</dependency>
+
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+```
+
+2. **bootstrap.yml**  
+```yaml
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
+```
+
+3. **OrderApplication.java**  
+> **启动类**添加注解``@EnableHystrixDashboard``，启动 Hystrix Dashboard 功能。  
+> 添加注解``@EnableHystrix``或``@EnableCircuitBreaker``开启断路器功能。  
+
+```java
+@EnableHystrixDashboard
+@SpringBootApplication
+@ComponentScan(basePackages = "cn.hunter")
+// @EnableDiscoveryClient
+@EnableHystrix
+@EnableFeignClients(basePackages = ("cn.hunter.product.client"))
+public class OrderApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(OrderApplication.class, args);
+    }
+}
+```
+
+### SpringCloud [Finchley.RC1] 坑  
+
+1. hystrix dashboard Unable to connect to Command Metric Stream？  
+
+参考资料：<https://hk.saowen.com/a/62b1a8707b602a4e669bbdcd422079fcaef6b8ec68442d3e278d775e6aa8a20c>  
+
+> Spring Boot 2.0版本需要在**启动类**添加ServletRegistrationBean，因为Spring Boot的默认路径不是``/hystrix.stream``。  
+
+```java
+@Bean
+    public ServletRegistrationBean getServlet() {
+        HystrixMetricsStreamServlet streamServlet = new HystrixMetricsStreamServlet();
+        ServletRegistrationBean registrationBean = new ServletRegistrationBean(streamServlet);
+        registrationBean.setLoadOnStartup(1);
+        registrationBean.addUrlMappings("/hystrix.stream");
+        registrationBean.setName("HystrixMetricsStreamServlet");
+        return registrationBean;
+    }
+```
+
+### 测试  
+
+测试环境恢复到``2.3.1``节内容，通过监控面板查看熔断状态！  
+
+1. ``order``启动后，访问：<http://localhost:8082/hystrix>  
+
+2. Hystrix-Dashboard 设置``order``对应的监控地址及参数：<http://localhost:8082/hystrix.stream>  
+
+![](http://p8hqd7oln.bkt.clouddn.com/18-6-17/66326109.jpg)
+
+> 进入监控页面后，如果一直处于 **loading**状态，需要访问``order``的服务；  
+> 比如<http://localhost:8082/getProductInfoList?number=1>、<http://localhost:8082/getProductInfoList?number=2>  
+
+![](http://p8hqd7oln.bkt.clouddn.com/18-6-17/97963643.jpg)
+
+3. 访问：<http://localhost:8082/getProductInfoList?number=1>  
+> 当``number=1``时，进行服务降级，降级的比例大于 **60%**时，开启熔断；  
+> 开启熔断后，之前``number=2``的正常的服务请求此时业务服务降级，调用回调方法。  
+
+4. 使用 **postman**，设置 100 次请求  
+
+![](http://p8hqd7oln.bkt.clouddn.com/18-6-17/77415967.jpg)
+![](http://p8hqd7oln.bkt.clouddn.com/18-6-17/86749981.jpg)
+![](http://p8hqd7oln.bkt.clouddn.com/18-6-17/19746636.jpg)
+
+5. 观察 **Hystrix-Dashboard**  
+> 因为100次请求，每一次都调用服务降级回调方法，所以最后比例一定会大于 **60%**；  
+> 此时，断路器 **Circuit** 由``closed``变为``open``；  
+> 访问<http://localhost:8082/getProductInfoList?number=2>，之前正常返回 **success** 发生服务降级，返回了默认降级回调函数响应。  
+
+![](http://p8hqd7oln.bkt.clouddn.com/18-6-17/19394645.jpg)
+![](http://p8hqd7oln.bkt.clouddn.com/18-6-17/71754426.jpg)
+
+6. 过一会后，再次请求<http://localhost:8082/getProductInfoList?number=2>  
+> **Hystrix-Dashboard**上，因为比例小于 **60%**，Circuit**又变回了 **closed**状态；  
+> 请求正常，返回 **success**。  
+
+![](http://p8hqd7oln.bkt.clouddn.com/18-6-17/50362083.jpg)
 
 # 参考  
 
 1. [springCloud Finchley 微服务架构从入门到精通【七】断路器 Hystrix(ribbon)](https://segmentfault.com/a/1190000014763791)  
-2. 
