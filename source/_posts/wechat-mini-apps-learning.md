@@ -13,6 +13,8 @@ tags:
 
 知乎精选：[如何入门微信小程序开发](https://www.zhihu.com/question/50907897)  
 
+[微信小程序开发资源汇总](https://github.com/justjavac/awesome-wechat-weapp)  
+
 ## github项目  
 
 1. [litemall【Spring Boot后端 + Vue管理员前端 + 微信小程序用户前端】](https://github.com/linlinjava/litemall)   
@@ -27,7 +29,8 @@ tags:
 1. github地址：[wepy](https://github.com/Tencent/wepy)  
 2. 组件汇总：[awesome-wepy](https://github.com/aben1188/awesome-wepy)  
 3. [省份/城市/区县定位选择器](https://gitee.com/qfr_bz/citySelector)  
-4. [微信小程序-日历](https://github.com/czcaiwj/calendar)  
+4. [微信小程序-极点日历](https://github.com/czcaiwj/calendar)  
+5. [微信原始小程序组件-minui](https://github.com/meili/minui)  
 
 ## mpvue：美团小程序开发框架  
 
@@ -43,7 +46,7 @@ tags:
 ### 项目名称  
 1. you can you up
 2. you will,you mast
-3.  
+
 
 ### 首页
 
@@ -57,7 +60,15 @@ tags:
 ### 类别统计页  
 
 1. 统计你自定义的事情的列表/柱形图等；  
-2. .....待续
+2. .....待续  
+
+## 使用组件  
+
+1. [微信小程序-极点日历](https://github.com/czcaiwj/calendar)  
+2. [轮播图：we-swiper](https://github.com/we-plugin/we-swiper)  
+3. [第三方UI组件库](https://github.com/TalkingData/iview-weapp)  
+4. [首页特效](http://www.wxapp-union.com/forum.php?mod=viewthread&tid=4628) 
+5. [首页特效](https://github.com/qindiandadudu/TianguoguoXiaopu)
 
 # 初步了解小程序  
 
