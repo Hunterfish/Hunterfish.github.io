@@ -69,7 +69,8 @@ tags:
 3. [第三方UI组件库](https://github.com/TalkingData/iview-weapp)  
 4. [首页特效](http://www.wxapp-union.com/forum.php?mod=viewthread&tid=4628) 
 5. [首页特效](https://github.com/qindiandadudu/TianguoguoXiaopu)
-
+6. [悬浮按钮-wux](https://github.com/skyvow/wux)  
+7. [promise](https://github.com/bigmeow/minapp-api-promise)
 # 初步了解小程序  
 
 通过上面视频教程，初步学习小程序前后台搭建。  
