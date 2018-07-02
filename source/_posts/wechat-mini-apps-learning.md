@@ -15,6 +15,8 @@ tags:
 
 [微信小程序开发资源汇总](https://github.com/justjavac/awesome-wechat-weapp)  
 
+[微信小程序使用有坑记录](https://github.com/senola/wechat-app-issues)
+
 ## github项目  
 
 1. [litemall【Spring Boot后端 + Vue管理员前端 + 微信小程序用户前端】](https://github.com/linlinjava/litemall)   
@@ -85,41 +87,6 @@ tags:
 
 4. **前端和后端联调**  
 
-# 微信小程序开发注意  
+## 
 
-## this.setData()解决异步问题  
-
-this.setData为一个异步函数,如果有业务需要当数据写入成功后执行的话,可以使用这个方法来执行``this.setData({}, cb)`` cb 为回调函数
-
-```js
-  touchStart: function (e) {
-    let timeStart = this.getTime();
-    let isTouch = true;
-    this.setData({ timeStart, isTouch }, this.getNum)
-  },
-
-  touchEnd: function () {
-    this.setData({ isTouch: false }, this.getNum)
-  },
-
-  getNum: function () {
-    let { timeStart, isTouch } = this.data;
-    let timeNow = this.getTime();
-    let timeNum = 200;
-    let num = timeNow - timeStart;
-    let touchType = num < timeNum ? '单击' : '长按';
-    if (isTouch) {
-      // fnc  执行想要做的事 
-      this.timer = setTimeout(this.getNum, 100)
-    }
-    else {
-      clearTimeout(this.timer)
-    }
-  },
-
-  getTime: function () {
-    let time = new Date()
-    return time.getTime()
-  } //获取当前时间的毫秒数
-
-```
+ 
