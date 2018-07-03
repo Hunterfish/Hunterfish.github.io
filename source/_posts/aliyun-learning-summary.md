@@ -10,3 +10,28 @@ tags:
 * 注意：我的服务器``ssh``文件夹在：``etc/ssh``。
 
 参考资料：<https://www.aliyun.com/jiaocheng/160395.html>
+
+# Docker操作
+
+## 删除容器与镜像  
+
+参考博客：<https://blog.csdn.net/qq_32447301/article/details/79387649>  
+
+## Docker 部署 SpringBoot  
+
+* [spring boot 应用发布到 docker 完整版](http://blog.anxpp.com/index.php/archives/1075/)  
+
+* [Docker — 从入门到实践](https://yeasy.gitbooks.io/docker_practice/)  
+
+### 部署遇到问题  
+
+1. 配置Docker Remote API  
+> 不用增加 ``Docker Hub`` 镜像地址，否则会报错；  
+
+2. 修改上述配置文件后，使用下面命令重启；  
+> ``systemctl daemon-reload``  
+
+3. 由于项目架构为SpringBoot的多模块，在子模块中运行下面命令即可：  
+> ``mvn clean package docker:build``  
+
+

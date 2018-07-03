@@ -87,6 +87,15 @@ tags:
 
 4. **前端和后端联调**  
 
-## 
+## 域名证书  
 
+* [SpringBoot微服务的https配置方法（即微信小程序后台服务搭建解决方案）](https://blog.csdn.net/Colton_Null/article/details/78266810)  
+
+## spring后台部署  
+
+* [Docker(四)：Docker 三剑客之 Docker Compose](http://www.ityouknow.com/docker/2018/03/22/docker-compose.html)  
+* [Spring Boot 2.0(六)：使用 Docker 部署 Spring Boot 开源软件云收藏](http://www.ityouknow.com/springboot/2018/04/02/docker-favorites.html)  
+* [利用docker nginx,redis,mysql部署springboot应用集群环境](https://blog.csdn.net/jzd1997/article/details/79315919)
+
+* [spring cloud 与 docker-compose构建微服务](https://blog.csdn.net/u012734441/article/details/77832797)
  

@@ -32,6 +32,27 @@ tags:
 
 1. [Intellij IDEA神器居然还有这些小技巧](https://blog.csdn.net/linsongbin1/article/details/80211919)  
 
+# git 忽略已提交文件  
+
+一次项目``target``文件竟然提交到git仓库里，idea自动生成的.gitignore文件可能没有忽略掉target文件。
+
+1. 新增下面文件  
+
+```xml
+target/
+*.war
+*.ear
+*.zip
+*.tar
+*.tar.gz
+```
+
+2. ``git rm -rf --cached .``  
+> 把本地缓存删除（改变成未track状态）  
+
+3. ``git add .``  
+4. ``git commit -m "update .gitignore"``
+
 
 
 
