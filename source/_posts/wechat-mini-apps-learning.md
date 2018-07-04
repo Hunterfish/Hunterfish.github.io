@@ -98,4 +98,13 @@ tags:
 * [利用docker nginx,redis,mysql部署springboot应用集群环境](https://blog.csdn.net/jzd1997/article/details/79315919)
 
 * [spring cloud 与 docker-compose构建微服务](https://blog.csdn.net/u012734441/article/details/77832797)
- 
+
+### 总结  
+
+1. [spring boot 应用发布到 docker 完整版](http://blog.anxpp.com/index.php/archives/1075/)  
+2. [阿里云服务器centos7安装nginx](https://www.cnblogs.com/kaid/p/7640723.html)
+> 注意：[编译nginx指定ssl模块](https://www.cnblogs.com/saneri/p/5391821.html)  
+> 注意：[nginx: [emerg] getpwnam(“www”) failed错误](http://blog.itblood.com/nginx-emerg-getpwnam-www-failed.html)  
+
+3. [阿里云官方文档：nginx安装ssl证书](https://yundun.console.aliyun.com/?spm=5176.2020520001.aliyun_sidebar.20.11f44bd3aPrsJa&p=cas#/cas/download/214817049210895?regionId=)  
+4. 
