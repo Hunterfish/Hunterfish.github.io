@@ -4,29 +4,28 @@
 
     
   <url>
-    <loc>https://www.ddebug.cn/springcloud-microservices-learning-action.html</loc>
-    <lastmod>2018-05-13T01:41:10.812Z</lastmod>
+    <loc>https://www.ddebug.cn/wechat-mini-apps-learning.html</loc>
+    <lastmod>2018-07-08T14:50:48.957Z</lastmod>
     <data>
         <display>
-        <title>初识Spring Cloud微服务</title>
-        <pubTime>2018-05-12T09:07:06.000Z</pubTime>
+        <title>微信小程序学习总结</title>
+        <pubTime>2018-06-13T05:28:28.000Z</pubTime>
         
-        <tag>Spring Cloud</tag>
+        <tag>微信小程序</tag>
          
          
            
              
-              <breadCrumb title="Spring Cloud微服务实战" url="https://www.ddebug.cn/categories/Spring-Cloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/"/>
+              <breadCrumb title="微信小程序学习实战" url="https://www.ddebug.cn/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/"/>
           
         </display>
     </data>
     </url>
 
     
-    
   <url>
     <loc>https://www.ddebug.cn/my-idea-summary.html</loc>
-    <lastmod>2018-05-12T09:01:25.462Z</lastmod>
+    <lastmod>2018-07-03T13:29:21.302Z</lastmod>
     <data>
         <display>
         <title>我的idea使用总结</title>
@@ -43,6 +42,728 @@
     </data>
     </url>
 
+    
+  <url>
+    <loc>https://www.ddebug.cn/aliyun-learning-summary.html</loc>
+    <lastmod>2018-07-03T13:29:21.280Z</lastmod>
+    <data>
+        <display>
+        <title>阿里云服务器总结</title>
+        <pubTime>2018-07-02T14:47:35.000Z</pubTime>
+        
+        <tag>阿里云服务器</tag>
+         
+         
+           
+             
+              <breadCrumb title="阿里云服务器" url="https://www.ddebug.cn/categories/%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.ddebug.cn/springcloud-project-docker-deploy.html</loc>
+    <lastmod>2018-06-21T12:42:00.156Z</lastmod>
+    <data>
+        <display>
+        <title>Spring Cloud 实战 (十五)：Docker容器部署</title>
+        <pubTime>2018-06-18T06:05:25.000Z</pubTime>
+        
+        <tag>Spring Cloud</tag>
+         
+        <tag>Docker</tag>
+         
+         
+           
+             
+              <breadCrumb title="Spring Cloud微服务实战" url="https://www.ddebug.cn/categories/Spring-Cloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.ddebug.cn/springcloud-hystrix-learning.html</loc>
+    <lastmod>2018-06-17T10:35:14.665Z</lastmod>
+    <data>
+        <display>
+        <title>Spring Cloud 实战 (十三)：Hystrix--服务容错</title>
+        <pubTime>2018-06-10T02:42:59.000Z</pubTime>
+        
+        <tag>Spring Cloud</tag>
+         
+        <tag>Hystrix</tag>
+         
+         
+           
+             
+              <breadCrumb title="Spring Cloud微服务实战" url="https://www.ddebug.cn/categories/Spring-Cloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.ddebug.cn/work-groupon-start-introduce.html</loc>
+    <lastmod>2018-06-17T01:54:34.301Z</lastmod>
+    <data>
+        <display>
+        <title>开发拼团功能</title>
+        <pubTime>2018-06-11T09:27:37.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.ddebug.cn/springcloud-zuul-learning2.html</loc>
+    <lastmod>2018-06-17T01:54:34.298Z</lastmod>
+    <data>
+        <display>
+        <title>Spring Cloud 实战 (十二)：Zuul--服务网关 (2)</title>
+        <pubTime>2018-06-08T01:27:26.000Z</pubTime>
+        
+        <tag>Spring Cloud</tag>
+         
+        <tag>Zuul</tag>
+         
+         
+           
+             
+              <breadCrumb title="Spring Cloud微服务实战" url="https://www.ddebug.cn/categories/Spring-Cloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.ddebug.cn/springcloud-zuul-learning.html</loc>
+    <lastmod>2018-06-17T01:54:34.297Z</lastmod>
+    <data>
+        <display>
+        <title>Spring Cloud 实战 (十二)：Zuul--服务网关 (1)</title>
+        <pubTime>2018-06-07T05:45:40.000Z</pubTime>
+        
+        <tag>Spring Cloud</tag>
+         
+        <tag>Zuul</tag>
+         
+         
+           
+             
+              <breadCrumb title="Spring Cloud微服务实战" url="https://www.ddebug.cn/categories/Spring-Cloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.ddebug.cn/springboot-mybatis-development-scaffold.html</loc>
+    <lastmod>2018-06-17T01:54:34.291Z</lastmod>
+    <data>
+        <display>
+        <title>SpringBoot + MyBatis 开发脚手架</title>
+        <pubTime>2018-06-13T07:15:24.000Z</pubTime>
+        
+        <tag>MySQL</tag>
+         
+        <tag>Spring Boot</tag>
+         
+         
+           
+             
+              <breadCrumb title="Spring Cloud微服务实战" url="https://www.ddebug.cn/categories/Spring-Cloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.ddebug.cn/springcloud-microservices-learning-action.html</loc>
+    <lastmod>2018-06-10T08:17:12.958Z</lastmod>
+    <data>
+        <display>
+        <title>Spring Cloud 实战 (一)：初识微服务架构与Spring Cloud</title>
+        <pubTime>2018-05-12T09:07:06.000Z</pubTime>
+        
+        <tag>Spring Cloud</tag>
+         
+         
+           
+             
+              <breadCrumb title="Spring Cloud微服务实战" url="https://www.ddebug.cn/categories/Spring-Cloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.ddebug.cn/wechat-ordering-service-split.html</loc>
+    <lastmod>2018-06-09T06:28:16.926Z</lastmod>
+    <data>
+        <display>
+        <title>Spring Cloud 实战 (三)：微信点餐业务服务拆分</title>
+        <pubTime>2018-05-14T02:49:31.000Z</pubTime>
+        
+        <tag>Spring Cloud</tag>
+         
+        <tag>Eureka</tag>
+         
+         
+           
+             
+              <breadCrumb title="Spring Cloud微服务实战" url="https://www.ddebug.cn/categories/Spring-Cloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.ddebug.cn/springcloud-stream-learning.html</loc>
+    <lastmod>2018-06-09T06:28:16.923Z</lastmod>
+    <data>
+        <display>
+        <title>Spring Cloud 实战 (十一)：Stream--消息驱动组件</title>
+        <pubTime>2018-06-06T06:01:10.000Z</pubTime>
+        
+        <tag>Spring Cloud</tag>
+         
+        <tag>Stream</tag>
+         
+         
+           
+             
+              <breadCrumb title="Spring Cloud微服务实战" url="https://www.ddebug.cn/categories/Spring-Cloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.ddebug.cn/springcloud-ribbon-learning.html</loc>
+    <lastmod>2018-06-09T06:28:16.922Z</lastmod>
+    <data>
+        <display>
+        <title>Spring Cloud 实战 (五)：Ribbon--负载均衡器</title>
+        <pubTime>2018-05-15T02:06:00.000Z</pubTime>
+        
+        <tag>Spring Cloud</tag>
+         
+        <tag>Ribbon</tag>
+         
+         
+           
+             
+              <breadCrumb title="Spring Cloud微服务实战" url="https://www.ddebug.cn/categories/Spring-Cloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.ddebug.cn/springcloud-rabbitmq-async-message.html</loc>
+    <lastmod>2018-06-09T06:28:16.920Z</lastmod>
+    <data>
+        <display>
+        <title>Spring Cloud 实战 (七)：使用RabbitMQ实现服务间异步消息调用</title>
+        <pubTime>2018-05-30T05:20:34.000Z</pubTime>
+        
+        <tag>Spring Boot</tag>
+         
+        <tag>RabbitMQ</tag>
+         
+         
+           
+             
+              <breadCrumb title="Spring Cloud微服务实战" url="https://www.ddebug.cn/categories/Spring-Cloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.ddebug.cn/springcloud-feign-learning.html</loc>
+    <lastmod>2018-06-09T06:28:16.905Z</lastmod>
+    <data>
+        <display>
+        <title>Spring Cloud 实战 (四)：Feign--应用通信</title>
+        <pubTime>2018-05-15T01:01:00.000Z</pubTime>
+        
+        <tag>Spring Cloud</tag>
+         
+        <tag>Feign</tag>
+         
+         
+           
+             
+              <breadCrumb title="Spring Cloud微服务实战" url="https://www.ddebug.cn/categories/Spring-Cloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.ddebug.cn/springcloud-eureka-learning.html</loc>
+    <lastmod>2018-06-09T06:28:16.903Z</lastmod>
+    <data>
+        <display>
+        <title>Spring Cloud 实战 (二)：Eureka--服务注册发现</title>
+        <pubTime>2018-05-13T02:59:09.000Z</pubTime>
+        
+        <tag>Spring Cloud</tag>
+         
+        <tag>Eureka</tag>
+         
+         
+           
+             
+              <breadCrumb title="Spring Cloud微服务实战" url="https://www.ddebug.cn/categories/Spring-Cloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.ddebug.cn/springcloud-docker-install-redis.html</loc>
+    <lastmod>2018-06-09T06:28:16.901Z</lastmod>
+    <data>
+        <display>
+        <title>Spring Cloud 基础篇 (二)：Docker 环境下安装 Redis</title>
+        <pubTime>2018-06-07T02:19:57.000Z</pubTime>
+        
+        <tag>Redis</tag>
+         
+        <tag>Docker</tag>
+         
+         
+           
+             
+              <breadCrumb title="Spring Cloud微服务实战" url="https://www.ddebug.cn/categories/Spring-Cloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.ddebug.cn/springcloud-docker-install-rabbitmq.html</loc>
+    <lastmod>2018-06-09T06:28:16.900Z</lastmod>
+    <data>
+        <display>
+        <title>Spring Cloud 基础篇 (一)：Docker 环境下安装 RabbitMQ</title>
+        <pubTime>2018-06-06T03:53:32.000Z</pubTime>
+        
+        <tag>Docker</tag>
+         
+        <tag>RabbitMQ</tag>
+         
+         
+           
+             
+              <breadCrumb title="Spring Cloud微服务实战" url="https://www.ddebug.cn/categories/Spring-Cloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.ddebug.cn/springcloud-docker-devops.html</loc>
+    <lastmod>2018-06-09T06:28:16.899Z</lastmod>
+    <data>
+        <display>
+        <title>Spring Cloud 实战 (八)：微服务、容器Docker和DevOps</title>
+        <pubTime>2018-05-30T05:53:03.000Z</pubTime>
+        
+        <tag>Spring Cloud</tag>
+         
+        <tag>Docker</tag>
+         
+        <tag>DevOps</tag>
+         
+         
+           
+             
+              <breadCrumb title="Spring Cloud微服务实战" url="https://www.ddebug.cn/categories/Spring-Cloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.ddebug.cn/springcloud-config-center-learning.html</loc>
+    <lastmod>2018-06-09T06:28:16.897Z</lastmod>
+    <data>
+        <display>
+        <title>Spring Cloud 实战 (九)：config--统一配置中心组件</title>
+        <pubTime>2018-05-31T02:23:34.000Z</pubTime>
+        
+        <tag>Spring Cloud</tag>
+         
+        <tag>config</tag>
+         
+         
+           
+             
+              <breadCrumb title="Spring Cloud微服务实战" url="https://www.ddebug.cn/categories/Spring-Cloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.ddebug.cn/springcloud-bus-learning.html</loc>
+    <lastmod>2018-06-09T06:28:16.896Z</lastmod>
+    <data>
+        <display>
+        <title>Spring Cloud 实战 (十)：bus--消息总线组件</title>
+        <pubTime>2018-06-01T09:11:26.000Z</pubTime>
+        
+        <tag>Spring Cloud</tag>
+         
+        <tag>config</tag>
+         
+         
+           
+             
+              <breadCrumb title="Spring Cloud微服务实战" url="https://www.ddebug.cn/categories/Spring-Cloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.ddebug.cn/springboot-multi-module-startup.html</loc>
+    <lastmod>2018-06-09T06:28:16.895Z</lastmod>
+    <data>
+        <display>
+        <title>Spring Cloud 实战 (六)：Spring Boot多模块化</title>
+        <pubTime>2018-05-28T05:09:23.000Z</pubTime>
+        
+        <tag>Spring Boot</tag>
+         
+        <tag>Spring Cloud</tag>
+         
+         
+           
+             
+              <breadCrumb title="Spring Cloud微服务实战" url="https://www.ddebug.cn/categories/Spring-Cloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.ddebug.cn/springboot-wechat-ordering-deploy-aliyun.html</loc>
+    <lastmod>2018-06-03T06:42:35.217Z</lastmod>
+    <data>
+        <display>
+        <title>Spring Boot微信点餐前端后端项目运行部署到阿里云服务器</title>
+        <pubTime>2018-05-10T01:35:49.000Z</pubTime>
+        
+        <tag>阿里云服务器</tag>
+         
+        <tag>Vue</tag>
+         
+         
+           
+             
+              <breadCrumb title="Spring Boot微信点餐项目" url="https://www.ddebug.cn/categories/Spring-Boot%E5%BE%AE%E4%BF%A1%E7%82%B9%E9%A4%90%E9%A1%B9%E7%9B%AE/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.ddebug.cn/windows-softwares-install-summary.html</loc>
+    <lastmod>2018-06-02T07:38:01.563Z</lastmod>
+    <data>
+        <display>
+        <title>总结Windows下各种开发软件安装配置</title>
+        <pubTime>2018-05-22T07:12:47.000Z</pubTime>
+        
+        <tag>windows</tag>
+         
+         
+           
+             
+              <breadCrumb title="开发工具" url="https://www.ddebug.cn/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.ddebug.cn/windows-cmd-summary.html</loc>
+    <lastmod>2018-06-02T07:38:01.562Z</lastmod>
+    <data>
+        <display>
+        <title>Windows cmd常用命令总结</title>
+        <pubTime>2018-05-30T01:42:07.000Z</pubTime>
+        
+        <tag>Windows</tag>
+         
+        <tag>cmd</tag>
+         
+         
+           
+             
+              <breadCrumb title="总结大全" url="https://www.ddebug.cn/categories/%E6%80%BB%E7%BB%93%E5%A4%A7%E5%85%A8/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.ddebug.cn/wdcp-dede-edit-company-home-page.html</loc>
+    <lastmod>2018-06-02T07:38:01.560Z</lastmod>
+    <data>
+        <display>
+        <title>WDCP面板+织梦模板构建网站</title>
+        <pubTime>2018-05-25T08:21:48.000Z</pubTime>
+        
+        <tag>Linux</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="https://www.ddebug.cn/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.ddebug.cn/vue-project-fast-create.html</loc>
+    <lastmod>2018-06-02T07:38:01.559Z</lastmod>
+    <data>
+        <display>
+        <title>快速创建Vue简单项目</title>
+        <pubTime>2018-05-18T02:10:12.000Z</pubTime>
+        
+        <tag>Vue</tag>
+         
+        <tag>Node.js</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="https://www.ddebug.cn/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.ddebug.cn/use-redis-cache.html</loc>
+    <lastmod>2018-06-02T07:38:01.558Z</lastmod>
+    <data>
+        <display>
+        <title>了解并使用Redis缓存</title>
+        <pubTime>2018-05-09T06:39:47.000Z</pubTime>
+        
+        <tag>Redis</tag>
+         
+        <tag>Spring Boot</tag>
+         
+        <tag>缓存</tag>
+         
+         
+           
+             
+              <breadCrumb title="Spring Boot微信点餐项目" url="https://www.ddebug.cn/categories/Spring-Boot%E5%BE%AE%E4%BF%A1%E7%82%B9%E9%A4%90%E9%A1%B9%E7%9B%AE/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.ddebug.cn/my-blog-start-journey.html</loc>
+    <lastmod>2018-06-02T07:38:01.535Z</lastmod>
+    <data>
+        <display>
+        <title>我的博客创建之旅</title>
+        <pubTime>2018-04-17T01:48:40.000Z</pubTime>
+        
+        <tag>杂谈</tag>
+         
+         
+           
+             
+              <breadCrumb title="杂谈" url="https://www.ddebug.cn/categories/%E6%9D%82%E8%B0%88/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.ddebug.cn/excellent-learning-website-summary.html</loc>
+    <lastmod>2018-06-02T07:38:01.534Z</lastmod>
+    <data>
+        <display>
+        <title>在工作学习中遇到的优秀网址总结</title>
+        <pubTime>2018-05-25T08:38:15.000Z</pubTime>
+        
+        <tag>总结</tag>
+         
+         
+           
+             
+              <breadCrumb title="总结大全" url="https://www.ddebug.cn/categories/%E6%80%BB%E7%BB%93%E5%A4%A7%E5%85%A8/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.ddebug.cn/app-share-page-vue-vant.html</loc>
+    <lastmod>2018-06-02T07:38:01.533Z</lastmod>
+    <data>
+        <display>
+        <title>移动端app分享html5页面跳转到app中</title>
+        <pubTime>2018-05-18T00:49:24.000Z</pubTime>
+        
+        <tag>Vue</tag>
+         
+        <tag>Vant</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="https://www.ddebug.cn/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.ddebug.cn/aliyun-install-redis-summary.html</loc>
+    <lastmod>2018-06-02T07:38:01.532Z</lastmod>
+    <data>
+        <display>
+        <title>阿里云服务器安装redis总结</title>
+        <pubTime>2018-05-01T07:18:20.000Z</pubTime>
+        
+        <tag>Linux</tag>
+         
+        <tag>阿里云服务器</tag>
+         
+        <tag>Redis</tag>
+         
+         
+           
+             
+              <breadCrumb title="阿里云服务器" url="https://www.ddebug.cn/categories/%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.ddebug.cn/aliyun-install-nexus-summary.html</loc>
+    <lastmod>2018-06-02T07:38:01.531Z</lastmod>
+    <data>
+        <display>
+        <title>阿里云服务器搭建Maven nexus私服</title>
+        <pubTime>2018-04-29T05:12:36.000Z</pubTime>
+        
+        <tag>Linux</tag>
+         
+        <tag>阿里云服务器</tag>
+         
+        <tag>Maven</tag>
+         
+        <tag>JDK</tag>
+         
+        <tag>Nexus3</tag>
+         
+         
+           
+             
+              <breadCrumb title="阿里云服务器" url="https://www.ddebug.cn/categories/%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.ddebug.cn/aliyun-install-mysql-summary.html</loc>
+    <lastmod>2018-06-02T07:38:01.530Z</lastmod>
+    <data>
+        <display>
+        <title>阿里云服务器安装mysql总结</title>
+        <pubTime>2018-04-27T06:37:52.000Z</pubTime>
+        
+        <tag>MySQL</tag>
+         
+        <tag>Linux</tag>
+         
+        <tag>阿里云服务器</tag>
+         
+         
+           
+             
+              <breadCrumb title="阿里云服务器" url="https://www.ddebug.cn/categories/%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.ddebug.cn/springcloud-learning-questions.html</loc>
+    <lastmod>2018-05-13T07:50:48.581Z</lastmod>
+    <data>
+        <display>
+        <title>Spring Cloud学习过程中遇到问题总结</title>
+        <pubTime>2018-05-13T06:44:53.000Z</pubTime>
+        
+        <tag>总结</tag>
+         
+        <tag>Spring Cloud</tag>
+         
+         
+           
+             
+              <breadCrumb title="Spring Cloud微服务实战" url="https://www.ddebug.cn/categories/Spring-Cloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
   <url>
     <loc>https://www.ddebug.cn/springboot-wechat-ordering-project-summary.html</loc>
@@ -112,30 +833,6 @@
 
     
   <url>
-    <loc>https://www.ddebug.cn/use-redis-cache.html</loc>
-    <lastmod>2018-05-11T13:18:19.539Z</lastmod>
-    <data>
-        <display>
-        <title>了解并使用Redis缓存</title>
-        <pubTime>2018-05-09T06:39:47.000Z</pubTime>
-        
-        <tag>Redis</tag>
-         
-        <tag>Spring Boot</tag>
-         
-        <tag>缓存</tag>
-         
-         
-           
-             
-              <breadCrumb title="Spring Boot微信点餐项目" url="https://www.ddebug.cn/categories/Spring-Boot%E5%BE%AE%E4%BF%A1%E7%82%B9%E9%A4%90%E9%A1%B9%E7%9B%AE/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://www.ddebug.cn/tk-mybatis-optimize-project.html</loc>
     <lastmod>2018-05-11T13:18:19.538Z</lastmod>
     <data>
@@ -178,28 +875,6 @@
 
     
   <url>
-    <loc>https://www.ddebug.cn/springboot-wechat-ordering-deploy-aliyun.html</loc>
-    <lastmod>2018-05-11T13:18:19.535Z</lastmod>
-    <data>
-        <display>
-        <title>Spring Boot微信点餐前端后端项目运行部署到阿里云服务器</title>
-        <pubTime>2018-05-10T01:35:49.000Z</pubTime>
-        
-        <tag>阿里云服务器</tag>
-         
-        <tag>Vue</tag>
-         
-         
-           
-             
-              <breadCrumb title="Spring Boot微信点餐项目" url="https://www.ddebug.cn/categories/Spring-Boot%E5%BE%AE%E4%BF%A1%E7%82%B9%E9%A4%90%E9%A1%B9%E7%9B%AE/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://www.ddebug.cn/springboot-global-exception-summary.html</loc>
     <lastmod>2018-05-11T13:18:19.534Z</lastmod>
     <data>
@@ -207,9 +882,9 @@
         <title>项目中异常捕获--统一异常处理</title>
         <pubTime>2018-05-09T00:56:58.000Z</pubTime>
         
-        <tag>Spring Boot</tag>
-         
         <tag>Exception</tag>
+         
+        <tag>Spring Boot</tag>
          
          
            
@@ -284,26 +959,6 @@
 
     
   <url>
-    <loc>https://www.ddebug.cn/my-blog-start-journey.html</loc>
-    <lastmod>2018-05-11T13:18:19.528Z</lastmod>
-    <data>
-        <display>
-        <title>我的博客创建之旅</title>
-        <pubTime>2018-04-17T01:48:40.000Z</pubTime>
-        
-        <tag>杂谈</tag>
-         
-         
-           
-             
-              <breadCrumb title="杂谈" url="https://www.ddebug.cn/categories/%E6%9D%82%E8%B0%88/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://www.ddebug.cn/distributed-system-and-session.html</loc>
     <lastmod>2018-05-11T13:18:19.527Z</lastmod>
     <data>
@@ -311,11 +966,11 @@
         <title>分布式系统和分布式session</title>
         <pubTime>2018-05-02T07:38:42.000Z</pubTime>
         
+        <tag>Spring Boot</tag>
+         
         <tag>分布式</tag>
          
         <tag>session</tag>
-         
-        <tag>Spring Boot</tag>
          
          
            
@@ -355,82 +1010,6 @@
         <title>解决阿里云服务器Linux异常文件下载</title>
         <pubTime>2018-05-11T05:16:05.000Z</pubTime>
         
-        <tag>Linux</tag>
-         
-        <tag>阿里云服务器</tag>
-         
-         
-           
-             
-              <breadCrumb title="阿里云服务器" url="https://www.ddebug.cn/categories/%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://www.ddebug.cn/aliyun-install-redis-summary.html</loc>
-    <lastmod>2018-05-11T13:18:19.524Z</lastmod>
-    <data>
-        <display>
-        <title>阿里云服务器安装redis总结</title>
-        <pubTime>2018-05-01T07:18:20.000Z</pubTime>
-        
-        <tag>Linux</tag>
-         
-        <tag>阿里云服务器</tag>
-         
-        <tag>Redis</tag>
-         
-         
-           
-             
-              <breadCrumb title="阿里云服务器" url="https://www.ddebug.cn/categories/%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://www.ddebug.cn/aliyun-install-nexus-summary.html</loc>
-    <lastmod>2018-05-11T13:18:19.522Z</lastmod>
-    <data>
-        <display>
-        <title>阿里云服务器搭建Maven nexus私服</title>
-        <pubTime>2018-04-29T05:12:36.000Z</pubTime>
-        
-        <tag>Linux</tag>
-         
-        <tag>阿里云服务器</tag>
-         
-        <tag>Maven</tag>
-         
-        <tag>JDK</tag>
-         
-        <tag>Nexus3</tag>
-         
-         
-           
-             
-              <breadCrumb title="阿里云服务器" url="https://www.ddebug.cn/categories/%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://www.ddebug.cn/aliyun-install-mysql-summary.html</loc>
-    <lastmod>2018-05-11T13:18:19.521Z</lastmod>
-    <data>
-        <display>
-        <title>阿里云服务器安装mysql总结</title>
-        <pubTime>2018-04-27T06:37:52.000Z</pubTime>
-        
-        <tag>MySQL</tag>
-         
         <tag>Linux</tag>
          
         <tag>阿里云服务器</tag>
