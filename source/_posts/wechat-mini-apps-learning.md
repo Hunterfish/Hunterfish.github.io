@@ -99,7 +99,7 @@ tags:
 
 * [spring cloud 与 docker-compose构建微服务](https://blog.csdn.net/u012734441/article/details/77832797)
 
-### 总结  
+## 总结  
 
 1. [spring boot 应用发布到 docker 完整版](http://blog.anxpp.com/index.php/archives/1075/)  
 2. [阿里云服务器centos7安装nginx](https://www.cnblogs.com/kaid/p/7640723.html)
@@ -107,4 +107,99 @@ tags:
 > 注意：[nginx: [emerg] getpwnam(“www”) failed错误](http://blog.itblood.com/nginx-emerg-getpwnam-www-failed.html)  
 
 3. [阿里云官方文档：nginx安装ssl证书](https://yundun.console.aliyun.com/?spm=5176.2020520001.aliyun_sidebar.20.11f44bd3aPrsJa&p=cas#/cas/download/214817049210895?regionId=)  
-4. 
+4.
+
+## mysql数据库备份
+
+参考：[CentOS 7 MySQL自动备份shell脚本](https://www.jianshu.com/p/746db5ceec02)
+
+# 部署流程  
+
+## 部署环境  
+
+* 阿里云服务器【centos 7】  
+
+## 部署配置
+
+### 配置Docker Remote API
+
+参考：[spring boot 应用发布到 docker 完整版](http://blog.anxpp.com/index.php/archives/1075/)
+
+1. pom.xml文件
+> 添加``docker-maven-plugin``，使用Docker Remote API 进行远程提交镜像的。  
+
+#### 部署遇到问题  
+
+1. 配置Docker Remote API  
+> 不用增加 ``Docker Hub`` 镜像地址，否则会报错；  
+
+2. 修改上述配置文件后，使用下面命令重启；  
+> ``systemctl daemon-reload``  
+
+3. 由于项目架构为SpringBoot的多模块，在子模块中运行下面命令即可：  
+> ``mvn clean package docker:build``  
+
+
+
+## 操作流程  
+
+1. 项目根目录：
+
+```java
+mvn clean install -Dmaven.test.skip=true
+```
+
+2. calendar-wx-api目录下：
+> 执行下面命令后，生成docker镜像，会推送到阿里云服务器
+
+```java
+mvn clean package -Dmaven.test.skip=true docker:build
+```
+![](http://p8hqd7oln.bkt.clouddn.com/18-7-8/91690899.jpg)
+
+
+3. 阿里云服务器启动docker服务【如果未启动】
+
+```java
+systemctl start docker
+```
+
+4. 下载Docker Java8 运行环境镜像
+> ```frolvlad/alpine-oraclejdk8```，最受欢迎
+
+```java
+docker pull frolvlad/alpine-oraclejdk8
+```
+
+5. 阿里云服务器运行docker容器  
+> -d：让容器后台运行  
+> -p：将容器内的端口映射到docker所在系统的端口  
+> -t：打开一个伪终端，以便后续可以进入查看控制台 log
+
+```java
+docker run -p 443:443 -t calendar/calendar-wx-api
+```
+
+6. 查看docker运行情况  
+
+![](http://p8hqd7oln.bkt.clouddn.com/18-7-8/91319982.jpg)
+
+7. 查看docker镜像日志：  
+> –since : 此参数指定了输出日志开始日期，即只输出指定日期之后的日志。  
+> -f : 表示查看实时日志   
+> -t : 查看日志产生的日期   
+> -tail=200 : 查看最后的200条日志。   
+> sleepy_snyder 容器的名称，并不是镜像的名字
+
+```java
+docker logs -f -t --since="2018-07-08" --tail=20 sleepy_tesla
+```
+![](http://p8hqd7oln.bkt.clouddn.com/18-7-8/21393208.jpg)
+ 
+8. 删除容器和镜像  
+> docker rmi [name]：删除镜像  
+> docker rm [name]：删除容器  
+
+![](http://p8hqd7oln.bkt.clouddn.com/18-7-8/18055543.jpg)
+
+
