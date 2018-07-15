@@ -107,7 +107,10 @@ tags:
 > 注意：[nginx: [emerg] getpwnam(“www”) failed错误](http://blog.itblood.com/nginx-emerg-getpwnam-www-failed.html)  
 
 3. [阿里云官方文档：nginx安装ssl证书](https://yundun.console.aliyun.com/?spm=5176.2020520001.aliyun_sidebar.20.11f44bd3aPrsJa&p=cas#/cas/download/214817049210895?regionId=)  
-4.
+4. [docker-compose部署使用spring测试、开发、生产环境等](https://blog.csdn.net/achenyuan/article/details/80509037)
+5. [让docker中的mysql启动时自动执行sql文件](https://cloud.tencent.com/developer/article/1061870)  
+6. [docker-lnmp: mysql/nginx/redis/php](https://github.com/voocel/docker-lnmp)  
+7. 
 
 ## mysql数据库备份
 
