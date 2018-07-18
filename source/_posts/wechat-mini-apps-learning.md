@@ -205,4 +205,25 @@ docker logs -f -t --since="2018-07-08" --tail=20 sleepy_tesla
 
 ![](http://p8hqd7oln.bkt.clouddn.com/18-7-8/18055543.jpg)
 
+## 第二种操作流程  
+
+1. copy jar包到linux  
+
+![](http://p8hqd7oln.bkt.clouddn.com/18-7-18/88044539.jpg)
+
+2. 在``~/calendar``目录下 **docker build**  
+
+```java
+docker build -t wechat/calendar:v1 .
+```
+
+3. ``docker images``   
+
+![](http://p8hqd7oln.bkt.clouddn.com/18-7-18/20893175.jpg)
+
+4. 运行docker镜像  
+
+```java
+docker run -p 8082:8082 wechat/calendar:v1
+```
 
