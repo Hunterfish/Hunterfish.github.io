@@ -23,15 +23,5 @@ tags:
 
 * [Docker — 从入门到实践](https://yeasy.gitbooks.io/docker_practice/)  
 
-### 部署遇到问题  
-
-1. 配置Docker Remote API  
-> 不用增加 ``Docker Hub`` 镜像地址，否则会报错；  
-
-2. 修改上述配置文件后，使用下面命令重启；  
-> ``systemctl daemon-reload``  
-
-3. 由于项目架构为SpringBoot的多模块，在子模块中运行下面命令即可：  
-> ``mvn clean package docker:build``  
 
 
