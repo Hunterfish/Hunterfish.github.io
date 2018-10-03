@@ -3,10 +3,56 @@
   
     
     <entry>
+      <title>我的java学习计划</title>
+      <link href="/my-java-study-plan.html"/>
+      <url>/my-java-study-plan.html</url>
+      <content type="html"><![CDATA[<h1 id="教程">1. 教程</h1><h2 id="视频">1.1. 视频</h2><ol><li><a href="http://www.imooc.com/u/2145618/courses" target="_blank" rel="noopener">java高并发秒杀</a>  <strong>未完成</strong>  </li></ol><h2 id="github">1.2. github</h2><ol><li><a href="https://gitee.com/52itstyle/spring-boot-seckill" target="_blank" rel="noopener">分布式秒杀系统</a>  </li></ol>]]></content>
+      
+      <categories>
+          
+          <category> 总结 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> java </tag>
+            
+            <tag> 计划 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>好用的软件总结</title>
+      <link href="/life-common-software.html"/>
+      <url>/life-common-software.html</url>
+      <content type="html"><![CDATA[<h1 id="windows">1. windows</h1><h2 id="系统安装">1.1. 系统安装</h2><ol><li><strong>Rufus</strong>  <blockquote><p><a href="https://rufus.akeo.ie/?locale=zh_CN" target="_blank" rel="noopener">Rufus - 轻松创建USB启动盘</a>  </p></blockquote></li></ol><h2 id="系统优化">1.2. 系统优化</h2><ol><li><strong>CClenaer</strong>  <blockquote><p><a href="https://www.ccleaner.com/" target="_blank" rel="noopener">清理卸载工具</a>  </p></blockquote></li></ol>]]></content>
+      
+      <categories>
+          
+          <category> 生活 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 软件 </tag>
+            
+            <tag> 教程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>java优秀的开源项目和博客</title>
       <link href="/java-open-program-learning.html"/>
       <url>/java-open-program-learning.html</url>
-      <content type="html"><![CDATA[<h1 id="github">1. github</h1><ol><li><p><a href="https://github.com/xingshaocheng/architect-awesome" target="_blank" rel="noopener">后端架构师技术图谱(architect-awesome)</a>  </p></li><li><p><a href="https://github.com/crossoverJie/JCSprout" target="_blank" rel="noopener">Java核心知识库(JCSprout)</a>  </p></li></ol><h1 id="博客大佬">2. 博客大佬</h1><ol><li><a href="https://crossoverjie.top/" target="_blank" rel="noopener">crossoverJie’s Blog</a>  </li></ol>]]></content>
+      <content type="html"><![CDATA[<h1 id="github">1. github</h1><h2 id="文档知识">1.1. 文档知识</h2><ol><li><p><a href="https://github.com/xingshaocheng/architect-awesome" target="_blank" rel="noopener">后端架构师技术图谱(architect-awesome)</a>  </p></li><li><p><a href="https://github.com/crossoverJie/JCSprout" target="_blank" rel="noopener">Java核心知识库(JCSprout)</a>  </p></li></ol><h2 id="开源项目">1.2. 开源项目</h2><ol><li><a href="https://github.com/code4craft/webmagic/blob/master/README-zh.md" target="_blank" rel="noopener">Java垂直爬虫框架(Web Magic)</a>  </li></ol><h3 id="netty系列">1.2.1. netty系列</h3><ol><li><p><a href="https://github.com/waylau/netty-4-user-guide" target="_blank" rel="noopener">Netty 4.x 用户指南(netty-4-user-guide)</a>  </p></li><li><p><a href="https://github.com/a2888409/face2face" target="_blank" rel="noopener">基于netty的IM服务器(face2face)</a>  </p></li><li><p><a href="https://github.com/mpusher/mpush" target="_blank" rel="noopener">MPush推送系统(mpush)</a>  </p></li><li><p><a href="https://github.com/tang-jie/NettyRPC" target="_blank" rel="noopener">基于netty构建RPC系统(NettyRPC)</a>  </p></li><li><p><a href="https://github.com/YunaiV/netty" target="_blank" rel="noopener">芋艿源码解读(netty)</a>  </p></li></ol><h1 id="博客大佬">2. 博客大佬</h1><ol><li><a href="https://crossoverjie.top/" target="_blank" rel="noopener">crossoverJie’s Blog</a>  </li></ol>]]></content>
       
       <categories>
           
@@ -817,9 +863,9 @@
       
         <tags>
             
-            <tag> Spring Boot </tag>
-            
             <tag> Exception </tag>
+            
+            <tag> Spring Boot </tag>
             
         </tags>
       
@@ -886,11 +932,11 @@
       
         <tags>
             
+            <tag> Spring Boot </tag>
+            
             <tag> 分布式 </tag>
             
             <tag> session </tag>
-            
-            <tag> Spring Boot </tag>
             
         </tags>
       
@@ -978,15 +1024,15 @@
       
         <tags>
             
-            <tag> Linux </tag>
-            
-            <tag> 阿里云服务器 </tag>
-            
             <tag> Maven </tag>
             
             <tag> JDK </tag>
             
             <tag> Nexus3 </tag>
+            
+            <tag> Linux </tag>
+            
+            <tag> 阿里云服务器 </tag>
             
         </tags>
       
@@ -1007,11 +1053,11 @@
       
         <tags>
             
-            <tag> MySQL </tag>
-            
             <tag> Linux </tag>
             
             <tag> 阿里云服务器 </tag>
+            
+            <tag> MySQL </tag>
             
         </tags>
       
