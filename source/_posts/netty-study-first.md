@@ -28,8 +28,6 @@ tags:
 * 自定义客户端服务端通信协议设计**魔数**的原因。  
 > 尽早屏蔽非本协议的客户端
 
-
-
 * 理解**服务端**绑定监听端口方法返回的一个``Future``、**客户端**连接服务端返回的``Future``，说明这两个方法是异步的。  参考``Java Futrue``资料：<https://blog.csdn.net/u014209205/article/details/80598209>。  
 
 * 无论是``netty``，还是原始的``Socket``编程，基于``TCP``通信的数据包格式均为**二进制**。  
@@ -37,8 +35,7 @@ tags:
 
 * 序列化和编码都是把``java``对象封装成二进制数据的过程，它们的区别和联系  
 > 编码在将java对象序列化后按照约定的协议规则处理。简单来说，序列化是将java对象持久化成二进制流，编码是将信息从一定格式转换成另一种格式，序列化可以看做是一种编码方式。  
-
-> 除了``json``序列化方式外，还有``xml``、``protobuf``方式。
+> 除了``json``序列化方式外，还有``xml``、``protobuf``方式。  
 
 *** Reactor 线程模型  
 > netty 提供了三种Reactor线程模型
@@ -56,6 +53,42 @@ tags:
 3. 主从线程组模型：一组线程池接收客户端请求，另一组线程池处理io操作  
 
   * 原来``Reactor单线程``变为``主线程池``，后面更名为``从线程池``。  
-  * 官方推荐的线程模型，高效
+  * 官方推荐的线程模型，高效  
+
+** websocket  
+
+实时通信的方式：  
+
+1. Ajax轮询  
+> 循环访问，不停建立http访问链接，耗费性能
+
+2. Long pull  
+> 阻塞模型，循环访问服务端，性能差
+
+3. websocket  
+> 一旦建立连接，服务端会主动的推送消息到客户端，客户端不需要请求服务端。  
+> 只需要一次http请求连接，服务端主动推送消息，节省资源。  
+
+*** websocket api  
+
+1. var socket = new WebSocket("ws://[ip]:[port]")  
+> 服务端和客户端通过url地址连接  
+
+2. 生命周期：onopen()、onmessage()、onerror()、onclose()  
+  
+  * onopen(): client和server连接时触发
+  * onmessage(): client收到消息时触发  
+  * onerror(): server等异常触发
+  * onclose: client断开连接触发  
+3. 主动方法  
+
+  * new WebSocket().send(): 客户端发送消息到服务端  
+  * new WebSocket().close(): 关闭客户端和服务端连接  
+  
+
+
+
+
+
 
 
