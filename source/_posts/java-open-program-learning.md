@@ -15,6 +15,8 @@ tags:
 
 2. [Java核心知识库(JCSprout)](https://github.com/crossoverJie/JCSprout)  
 
+3. [java面试指南(JavaGuide)](https://github.com/Snailclimb/JavaGuide)  
+
 ## 开源项目  
 
 1. [Java垂直爬虫框架(Web Magic)](https://github.com/code4craft/webmagic/blob/master/README-zh.md)  
