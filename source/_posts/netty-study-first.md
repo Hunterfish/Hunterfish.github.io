@@ -17,6 +17,8 @@ tags:
 
 3. [微信聊天表结构设计](https://wenku.baidu.com/view/b7c83e54ba0d4a7302763acf.html)  
 
+4. [微信小程序中如何使用WebSocket实现长连接](https://www.cnblogs.com/imstudy/p/9224604.html)   
+
 
 
 ** 总结知识点  
@@ -84,6 +86,18 @@ tags:
 
   * new WebSocket().send(): 客户端发送消息到服务端  
   * new WebSocket().close(): 关闭客户端和服务端连接  
+
+** 心跳  
+
+1. netty与三个手机（客户端）连接，此时Channel数量3个； 
+![]()
+2. 如果用户手动关闭手机websocket进程，服务端自定义的handler会把每个channel关闭并移除，此时Channel数量为0；  
+3. 如果用户开始飞行模式，websocket进程没有关闭，服务端Channel数量还是3个；
+![]()
+4. 如果有几千上万的手机端开启了飞行模式，服务端的channel没有关闭，造成资源的浪费；  
+5. 所以我们要在客户端做心跳机制，检测失败的关闭Channel。  
+
+
   
 
 
