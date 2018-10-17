@@ -97,7 +97,79 @@ tags:
 4. 如果有几千上万的手机端开启了飞行模式，服务端的channel没有关闭，造成资源的浪费；  
 5. 所以我们要在客户端做心跳机制，检测失败的关闭Channel。  
 
+** 责任链模式  
 
+*** 责任链  
+
+> 通俗讲，将对象处理连成一条链，使得请求可以在链中进行传递，直到有一个对象处理他为止。  
+
+*** 角色  
+
+1. 抽象处理者角色（Handler）  
+> 定义一个处理请求接口，接口中定义出一个方法用来设定和返回对下个处理者的引用，通常用Java抽象类或者Java接口实现。  
+
+2. 具体处理角色（ConcreteHandler）  
+> 具体处理者接到请求后，可以选择将请求处理掉，或者将请求传给下家，由于具体处理者持有对下家的引用，因此，如果需要，具体处理者可以访问下家。  
+
+*** 实例  
+
+* ``Handler.java``: 抽象处理者角色
+```java
+public abstract class Handler {
+  /** 持有后继的责任对象 */
+  protected Handler successor;
+
+  /** 处理请求的方法，自定义参数 */
+  public abstract void handleRequest();
+
+  /**
+   * 取值方法
+   */
+   public Handler getSuccessor() {
+     return successor;
+   }
+
+   /** 赋值方法，设置后继的责任对象 */
+   public void setSuccessor(Handler successor) {
+     this.successor = successor;
+   }
+}
+
+```
+
+* ``ConcreateHandler.java``: 具体处理者角色  
+```java
+public class ConcreateHandler extends Handler {
+  /**
+   * 处理请求方法
+   */
+   @Override
+   public void handleRequest() {
+     // 判断是否有后继的责任对象
+     // 1. 如果有，转发给后继的责任对象
+     // 2. 如果没有，处理请求
+     if (getSuccessor() != null) {
+       getSuccessor().handleRequest();
+     } else {
+       System.out.println("处理请求");
+     }
+   }
+}
+```
+
+* ``Client.java``: 客户端类  
+```java
+public class Client {
+  public static void main(String[] args) {
+    // 组装责任链
+    Handler handler1 = new ConcreateHandler();
+    Handler handler2 = new ConcreateHandler();
+    handler1.setSuccessor(handler2);
+    // 提交请求
+    handler1.handleRequest()
+  }
+}
+```
   
 
 
