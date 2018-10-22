@@ -17,7 +17,9 @@ tags:
 
 3. [微信聊天表结构设计](https://wenku.baidu.com/view/b7c83e54ba0d4a7302763acf.html)  
 
-4. [微信小程序中如何使用WebSocket实现长连接](https://www.cnblogs.com/imstudy/p/9224604.html)   
+4. [微信小程序中如何使用WebSocket实现长连接](https://www.cnblogs.com/imstudy/p/9224604.html)  
+
+5. [新手入门一篇就够：从零开发移动端IM](http://www.52im.net/thread-464-1-1.html)  
 
 
 
