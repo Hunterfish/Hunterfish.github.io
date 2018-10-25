@@ -21,6 +21,14 @@ tags:
 
 1. [Java垂直爬虫框架(Web Magic)](https://github.com/code4craft/webmagic/blob/master/README-zh.md)  
 
+2. [Spring Cloud + Vue + oAuth2.0商城(paascloud-master)](https://github.com/paascloud/paascloud-master)  
+
+3. [基于可靠消息最终一致性分布式事务框架(myth)](https://github.com/yu199195/myth)  
+
+
+
+
+
 ### netty系列  
 
 1. [Netty 4.x 用户指南(netty-4-user-guide)](https://github.com/waylau/netty-4-user-guide)  
