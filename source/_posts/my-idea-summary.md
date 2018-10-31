@@ -51,8 +51,15 @@ target/
 > 把本地缓存删除（改变成未track状态）  
 
 3. ``git add .``  
-4. ``git commit -m "update .gitignore"``
+4. ``git commit -m "update .gitignore"``  
 
+# 翻译插件  
+
+github: [TranslationPlugin](https://github.com/YiiGuxing/TranslationPlugin)  
+
+# mybatis插件  
+
+``mybatis-plus2.92``: 链接: https://pan.baidu.com/s/1uydTqyurhDSe7g72Te9HdQ 提取码: w355 
 
 
 
