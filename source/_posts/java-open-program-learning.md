@@ -28,7 +28,210 @@ tags:
 ### 基于可靠消息最终一致性分布式事务框架(myth)  
 [基于可靠消息最终一致性分布式事务框架(myth)](https://github.com/yu199195/myth)  
 
-#### 项目demo流程  
+### 高性能异步分布式事务TCC框架  
+
+[高性能异步分布式事务TCC框架（try/confirm/cancel）](https://github.com/yu199195/hmily)  
+
+# 开源项目讲解  
+
+## Hmily项目demo流程  
+
+1. aop  
+> 根据添加的注解进行aop处理  
+
+2. rpc框架特性  
+> 在调用远程服务的接口前，获取所调用的方法签名  
+
+3. rpc框架参数传递  
+> 通过ThreadLocal保存事务上下文信息，进行参数传递  
+
+4. 事务日志，到底存储了什么东西？怎么存储的，怎么序列化的？  
+
+5. 定时事务补偿  
+> 使用jdk的``ScheduledExecutorService.scheduleWithFixedDelay()``，主要作用将定时任务和线程池功能结合使用。  
+> 参考：[Thread之ScheduledExecutorService的使用](https://www.cnblogs.com/huhx/p/baseusejavaScheduledExecutorService.html)  
+
+6. 高效并发  
+> 单击 ``2000`` 并发，可以通过``jmeter压测``  
+> 因为目前是异步的存储日志到mysql，会有限制，使用``mongo``集群，很快  
+
+7. TCC缺点  
+> 代码量多，try、confirm、cancel三个方法，使用者需要知道confirm、cancel方法的正确书写，使用场景有限。  
+> 事务日志需要记录：推荐使用高效的存储，推荐使用mongo集群，kroy序列化  
+
+8. TCC优点  
+> 天然支持集群，不依赖于事务；  
+> 依赖事务日志，最终一致性
+
+### 使用技术  
+
+#### ScheduledExecutorService  
+
+参考博客：[a定时任务之ScheduledThreadPoolExecutor](http://moon-walker.iteye.com/blog/2407533)  
+
+1. extends [ThreadPoolExecutor](http://moon-walker.iteye.com/blog/2406788)，说明本质也是一个线程池。  
+```java
+public class ScheduledThreadPoolExecutor  extends ThreadPoolExecutor  
+                implements ScheduledExecutorService {  
+//省略实现代码  
+}
+```
+2. 实现``ScheduledExecutorService``接口，自定义个性方法，实现**延迟任务和周期性任务**的核心方法。 
+
+> 下面四个方法都是提交任务方法，相当于``ThreadPoolExecutor``的execute、submit方法，并且都由返回值，类型都是``ScheduledFuture``，相当于普通线程池的``Future``，可以用于控制任务生命周期。  
+
+> 第1、2个是**延迟任务**，即延迟固定period时间后，执行任务。  
+> 第3、4个是**周期性任务**，
+```java
+// 1. 延迟任务 执行方法，参数为Runnable类型对象  
+public ScheduledFuture<?> schedule(Runnable command,  
+                                    long delay, TimeUnit unit);  
+
+// 2. 延迟任务 执行方法，参数为Callable类型对象  
+public <V> ScheduledFuture<V> schedule(Callable<V> callable,  
+                                        long delay, TimeUnit unit);  
+// 3. 固定频率 执行方法，任务时间到后就立即执行
+// 等待周期分两种情况：如果程序的执行时间大于间隔时间，等待周期为执行时间；
+// 如果程序的执行时间小于间隔时间，等待周期为间隔时间
+public ScheduledFuture<?> scheduleAtFixedRate(Runnable command,  
+                                                long initialDelay,  
+                                                long period,  
+                                                TimeUnit unit);  
+
+// 4. 固定延迟周期 执行方法，上次执行完成后（不管执行任务需要花多长时间）固定等待延迟时间后 再执行  
+public ScheduledFuture<?> scheduleWithFixedDelay(Runnable command,  
+                                                    long initialDelay,  
+                                                    long delay,  
+                                                    TimeUnit unit);  
+```
+
+3. 新建线程池的任务队列是``ScheduledThreadPoolExecutor``的静态内部类``DelayedWorkQueue``。  
+> 该队列主要是维护了一个由[二叉堆算法(最小堆)](https://www.cnblogs.com/skywang12345/p/3610390.html)实现的数组，简单理解就是在调用add方法插入队列时，采用二叉堆算法保证第一个元素是最小值，这里其实就是**Delay时间**最小的值。  
+
+```java
+public ScheduledService(final TccConfig tccConfig, final CoordinatorRepository coordinatorRepository) {
+        this.tccConfig = tccConfig;
+        this.coordinatorRepository = coordinatorRepository;
+        // 内部默认实现了队列
+        this.scheduledExecutorService = new ScheduledThreadPoolExecutor(1, HmilyThreadFactory.create("tccRollBackService", true));
+    }
+```
+
+
+
+#### 切面-AOP  
+
+1. 理解了aop，就理解了tcc，就理解了分布式事务的实现。  
+
+```java
+ @Override
+    @Tcc(confirmMethod = "confirmOrderStatus", cancelMethod = "cancelOrderStatus")
+    public void makePayment(Order order) {
+        order.setStatus(OrderStatusEnum.PAYING.getCode());
+        // 本地事务
+        orderMapper.update(order);
+        // 扣除用户余额
+        AccountDTO accountDTO = new AccountDTO();
+        accountDTO.setAmount(order.getTotalAmount());
+        accountDTO.setUserId(order.getUserId());
+        LOGGER.debug("===========执行springcloud扣减资金接口==========");
+        // 远端服务
+        accountClient.payment(accountDTO);
+        //进入扣减库存操作
+        InventoryDTO inventoryDTO = new InventoryDTO();
+        inventoryDTO.setCount(order.getCount());
+        inventoryDTO.setProductId(order.getProductId());
+        // 远端服务
+        inventoryClient.decrease(inventoryDTO);
+    }
+```
+
+2. 实现springcloud的切面类实现了Spirng的``Ordered``接口，并重写了getOrder方法，返回``Ordered.HIGHEST_PRECEDENCE``，所以他是优先级最高的切面。  
+```java
+@Aspect
+@Component
+public class SpringCloudHmilyTransactionAspect extends AbstractTccTransactionAspect implements Ordered {
+
+    @Autowired
+    public SpringCloudHmilyTransactionAspect(final SpringCloudHmilyTransactionInterceptor springCloudHmilyTransactionInterceptor) {
+        this.setTccTransactionInterceptor(springCloudHmilyTransactionInterceptor);
+    }
+
+    @Override
+    public int getOrder() {
+        return Ordered.HIGHEST_PRECEDENCE;
+    }
+}
+```
+
+3. 我们在``下订单``时会调用远端rpc服务，springcloud使用``@FeignClient``，并在接口上加了注解``@Tcc``。  
+> Spring AOP的特性，接口上加注解，无法进入切面，所以在这里，要采用rpc框架的某些特性来帮助我们获取到``@Tcc``注解信息。  
+
+```java
+@FeignClient(value = "account-service", configuration = MyConfiguration.class)
+@SuppressWarnings("all")
+public interface AccountClient {
+
+    /**
+     * 用户账户付款
+     * @param accountDO 实体类
+     * @return true 成功
+     */
+    @PostMapping("/account-service/account/payment")
+    @Tcc
+    Boolean payment(@RequestBody AccountDTO accountDO);
+}
+```
+
+4. 承接上一步，当调用``SpringCloud``的RPC服务``accountClient.payment()``，会进入``HmilyFeignHandler``。  
+> 通过@FeignClient的自定义配置``MyConfiguration.java``;  
+> 在这里我们获取了之前设置到本地ThreadLocal里的事务上下文，然后进行SpringCloud的rpc传参数。  
+> 保存方法的所有的信息，方法签名、接口等。
+
+
+### tcc库作用  
+
+存储做分布式事务时的日志信息。  
+1. 如果是正常执行，日志信息会删除；  
+2. ``订单``、``库存``、``账户``三个不同的库，下订单时，属于分布式事务，如果有一处异常，比如库存异常（服务断掉），已经持久化的订单、账户就会回滚，保持事务高度一致性。  
+
+3. 服务超时时，通过**本地补偿**，
+
+* applicationContext.xml  
+```xml
+<context:component-scan base-package="com.hmily.tcc.*"/>
+    <aop:aspectj-autoproxy expose-proxy="true"/>
+    <bean id="hmilyTransactionBootstrap" class="com.hmily.tcc.core.bootstrap.HmilyTransactionBootstrap">
+        <property name="serializer" value="kryo"/>
+        <property name="recoverDelayTime" value="120"/>
+        <property name="retryMax" value="30"/>
+        <property name="scheduledDelay" value="120"/>
+        <property name="scheduledThreadMax" value="4"/>
+        <property name="repositorySupport" value="db"/>
+        <property name="tccDbConfig">
+            <bean class="com.hmily.tcc.common.config.TccDbConfig">
+                <property name="url"
+                          value="jdbc:mysql://localhost:3306/tcc?useUnicode=true&amp;characterEncoding=utf8"/>
+                <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
+            </bean>
+        </property>
+    </bean>
+```
+
+### 执行confirm、cancel方法失败时  
+
+框架初始化时，会初始化一个线程池，任务调度，根据你的配置多少时间轮询一次。  
+1. 如果你的日志没有删除，服务分布式事务执行失败，进行各种情况的判断；  
+2. 如果try未执行完成，那么就不进行补偿，直接删除事务日志 （防止在try阶段的各种异常情况）  
+3. 如果超过了最大执行次数，不再进行重试  
+4. 
+
+
+
+
+### Myth项目demo流程  
 
 > ``MythMqReceiveServiceImpl.java``: ReentrantLock  
 
