@@ -186,7 +186,7 @@ public class RedisAspect {
 参考：[Thread之ScheduledExecutorService的使用](https://www.cnblogs.com/huhx/p/baseusejavaScheduledExecutorService.html)  
 
 
-### 全局异常处理机制  
+### 全局异常处理机制   
 
 > 本项目通过 ``RRException`` 异常类，抛出自定义异常，RRException继承 ``RuntimeException``，不能继承Exception，如果继承Exception，则Spring事务不会回滚。  
 

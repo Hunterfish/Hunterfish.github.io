@@ -46,13 +46,16 @@ tags:
 > 通过ThreadLocal保存事务上下文信息，进行参数传递  
 
 4. 事务日志，到底存储了什么东西？怎么存储的，怎么序列化的？  
+> 采用``disruptor``进行事务日志异步读写，与rpc框架性能毫无差别
 
 5. 定时事务补偿  
 > 使用jdk的``ScheduledExecutorService.scheduleWithFixedDelay()``，主要作用将定时任务和线程池功能结合使用。  
 > 参考：[Thread之ScheduledExecutorService的使用](https://www.cnblogs.com/huhx/p/baseusejavaScheduledExecutorService.html)  
+> 解决集群下重复执行问题，可以使用[redis分布式锁](https://blog.csdn.net/quwenzhe/article/details/78865875)解决，redis的命令``setnx``实现：当网redis中存入一个值时，会先判断该值对应的key是否存在，如果存在则返回0，如果不存在，则将该值存入redis并返回1。  
+> 根据上面的特性，我们在执行任务的程序中，每次都调用``setIfAbsent(该方法时setnx命令的实现)``方法，来模拟是否获取到锁，如果返回true，则说明key值不存在，表示获取到锁；如果返回false，则说明key值已存在，已经有程序使用这个key了，从而实现类似加锁的功能。  
 
 6. 高效并发  
-> 单击 ``2000`` 并发，可以通过``jmeter压测``  
+> 单机 **2000** 并发，可以通过[jmeter压测](http://www.cnblogs.com/yangxia-test/p/3964881.html)  
 > 因为目前是异步的存储日志到mysql，会有限制，使用``mongo``集群，很快  
 
 7. TCC缺点  
@@ -64,6 +67,40 @@ tags:
 > 依赖事务日志，最终一致性
 
 ### 使用技术  
+
+#### mysql乐观锁  
+
+目的：解决高并发。  
+
+参考：[APP大规模高并发请求和抢购的架构与解决方案](https://www.cnblogs.com/jurendage/p/9232173.html)  
+
+在**定时事务补偿**补偿中，对于事务异常记录到数据库中的事务进行补偿重试操作，为避免高并发，采用``mysql乐观锁``机制，采用版本号的形式实现，事务的重试次数即为版本号。  
+
+> 乐观锁，是相对于**悲观锁**采用更为宽松的加锁机制，大都是采用带版本号（Version）更新。实现就是，这个数据所有请求都有资格去修改，但会获得一个该数据的版本号，只有版本号符合的才能重试。  
+
+> 悲观锁，也就是在修改数据的时候，采用锁定状态，排斥外部请求的修改。遇到加锁的状态，就必须等待。
+虽然上述的方案的确解决了线程安全的问题，但是，别忘记，我们的场景是“高并发”。也就是说，会很多这样的修改请求，每个请求都需要等待“锁”，某些线程可能永远都没有机会抢到这个“锁”，这种请求就会死在那里。同时，这种请求会很多，瞬间增大系统的平均响应时间，结果是可用连接数被耗尽，系统陷入异常。 
+
+```java
+@Override
+public int update(final TccTransaction tccTransaction) {
+    final Integer currentVersion = tccTransaction.getVersion();
+    tccTransaction.setLastTime(new Date());
+    tccTransaction.setVersion(tccTransaction.getVersion() + 1);
+    String sql = "update " + tableName
+            + " set last_time = ?,version =?,retried_count =?,invocation=?,status=? ,pattern=? where trans_id = ? and version=? ";
+    try {
+        final byte[] serialize = serializer.serialize(tccTransaction.getParticipants());
+        return executeUpdate(sql, tccTransaction.getLastTime(),
+                tccTransaction.getVersion(), tccTransaction.getRetriedCount(), serialize,
+                tccTransaction.getStatus(), tccTransaction.getPattern(),
+                tccTransaction.getTransId(), currentVersion);
+    } catch (TccException e) {
+        e.printStackTrace();
+        return FAIL_ROWS;
+    }
+}
+```
 
 #### ScheduledExecutorService  
 
