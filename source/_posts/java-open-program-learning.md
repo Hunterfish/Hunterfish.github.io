@@ -17,6 +17,8 @@ tags:
 
 3. [java面试指南(JavaGuide)](https://github.com/Snailclimb/JavaGuide)  
 
+4. [Java开源生鲜电商平台](http://www.cnblogs.com/jurendage)  
+
 ## 开源项目  
 
 ### Java垂直爬虫框架(Web Magic)  
@@ -46,7 +48,7 @@ tags:
 > 通过ThreadLocal保存事务上下文信息，进行参数传递  
 
 4. 事务日志，到底存储了什么东西？怎么存储的，怎么序列化的？  
-> 采用``disruptor``进行事务日志异步读写，与rpc框架性能毫无差别
+> 采用``disruptor``进行事务日志异步读写，与rpc框架性能毫无差别   
 
 5. 定时事务补偿  
 > 使用jdk的``ScheduledExecutorService.scheduleWithFixedDelay()``，主要作用将定时任务和线程池功能结合使用。  
@@ -105,7 +107,6 @@ public int update(final TccTransaction tccTransaction) {
 #### ScheduledExecutorService  
 
 参考博客：[a定时任务之ScheduledThreadPoolExecutor](http://moon-walker.iteye.com/blog/2407533)  
-
 1. extends [ThreadPoolExecutor](http://moon-walker.iteye.com/blog/2406788)，说明本质也是一个线程池。  
 ```java
 public class ScheduledThreadPoolExecutor  extends ThreadPoolExecutor  

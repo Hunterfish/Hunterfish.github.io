@@ -23,6 +23,9 @@ tags:
 
 6. [新手入门一篇就够：从零开发移动端IM](http://www.52im.net/thread-464-1-1.html)  
 
+7. [大佬的netty企业即时通讯系统博客](http://www.cookqq.com/listBlog.action?type=8a10a5f34e38beab014e4cd6b9e801cf)  
+
+
 
 
 ## 总结知识点  
