@@ -22,6 +22,19 @@ liang多多商城后台微服务项目介绍。
 
 > 基于 `OAuht2` 方案实现对于请求或登陆的用户身份的认证和合法性鉴权。  
 
+> 参考博客：[Spring Cloud oauth2.0学习总结](https://blog.csdn.net/j754379117/article/details/70175198)  
+
+主要流程：  
+1. 认证服务器``@EnableAuthorizationServer``    
+> 使用该注解声明一个认证服务器，配置好**开启密码授权模式**、**token存储方式（redis）**、**注入操作token的类**。  
+> 配置当前认证服务器的授权模式为``密码授权``，其他微服务的**资源服务器**的授权模式为``client客户端模式``。  
+
+2. 资源服务器``@EnableResourceServer``  
+> 使用该注解声明一个资源服务器，通过``client客户端授权模式``从认证服务器获取用户认证信息；  
+> 可以配置默认的无需认证的访问接口  
+
+3. 其他微服务比如``supplier-service``、``life-service``通过第2步的注解生命一个资源服务器，注入认证服务器配置的``client模式``的**clientId**、**clientSecret**等参数，从而从认证服务器中获取用户token信息。  
+
 ### 负载均衡  
 
 #### 介绍

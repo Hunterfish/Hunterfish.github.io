@@ -17,7 +17,7 @@ tags:
 
 3. [java面试指南(JavaGuide)](https://github.com/Snailclimb/JavaGuide)  
 
-4. [Java开源生鲜电商平台](http://www.cnblogs.com/jurendage)  
+4. [Java开源生鲜电商平台](http://www.cnblogs.com/jurendage)   
 
 ## 开源项目  
 

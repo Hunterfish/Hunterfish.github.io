@@ -1,5 +1,5 @@
 ---
-title: job-interview-summary
+title: 大佬们的面试总结
 date: 2018-10-31 10:25:41
 tags:
 ---
@@ -14,5 +14,13 @@ tags:
 
 3. [数据结构-算法博客](https://www.cnblogs.com/skywang12345/category/508186.html)  
 
+# mysql  
 
+## 插入百万级别数据  
+
+参考博客：[JDBC实现往MySQL插入百万级数据](https://www.cnblogs.com/fnz0/p/5713102.html)  
+
+## sql优化  
+
+参考博客：<https://github.com/crossoverJie/JCSprout/blob/master/MD/SQL-optimization.md>  
 
