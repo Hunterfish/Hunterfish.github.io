@@ -53,6 +53,73 @@ liang多多商城后台微服务项目介绍。
 
 > 因为采取了服务的分布，为了避免服务之间的调用“雪崩”，采用了`Hystrix`的作为熔断器，避免了服务之间的“雪崩”。  
 
+### 线程池运用  
+
+当发送极光推送的消息、短信消息时，通过``TheadPoolExecutor``线程池技术来执行任务。  
+
+参考博客： [ThreadPoolExecutor线程池解析与BlockingQueue的三种实现](https://blog.csdn.net/a837199685/article/details/50619311)  
+
+* 线程池工作原理：  
+1. 如果运行的线程少于 corePoolSize，则 Executor 始终首选添加新的线程，而不进行排队。（什么意思？如果当前运行的线程小于corePoolSize，则任务根本不会存放，添加到queue中。  
+
+2. 如果运行的线程等于或多于 corePoolSize，则 Executor 始终首选将请求加入队列，而不添加新的线程。  
+
+3. 如果无法将请求加入队列（队列已满），则创建新的线程，除非创建此线程超出 maximumPoolSize，如果超过，在这种情况下，新的任务将被拒绝。
+
+```java
+@Component
+public class ExecutorService implements DisposableBean {
+
+    private static final Logger logger = LoggerFactory.getLogger(ExecutorService.class);
+
+    private ThreadPoolExecutor poolExecutor;
+
+    public void executeCommand(Runnable command) {
+        getPoolExecutor().execute(new ExecutorRunnable(command));
+    }
+
+    private ThreadPoolExecutor getPoolExecutor() {
+        if (poolExecutor == null) {
+            // 1. corePoolSize: 核数
+            int corePoolSize = Runtime.getRuntime().availableProcessors() + 1;
+            // 2. maxinumPoolSize: 核数*2
+            int maximumPoolSize = corePoolSize * 2;
+            // 3. LinkedBlockingQueue: 一个基于链表的阻塞队列，FIFO，吞吐量高于ArrayBlockingQueue
+            poolExecutor = new ThreadPoolExecutor(corePoolSize, maximumPoolSize, 60, TimeUnit.SECONDS, new LinkedBlockingQueue<>());
+            poolExecutor.allowCoreThreadTimeOut(true);
+            logger.info("[ExecutorService] => corePoolSize: {}, maximumPoolSize: {}", corePoolSize, maximumPoolSize);
+        }
+        return poolExecutor;
+    }
+
+    @Override
+    public void destroy() throws Exception {
+        if (poolExecutor != null) {
+            poolExecutor.shutdown();
+            poolExecutor.awaitTermination(10, TimeUnit.SECONDS);
+        }
+    }
+
+    public class ExecutorRunnable implements Runnable {
+
+        private Runnable command;
+
+        ExecutorRunnable(Runnable command) {
+            this.command = command;
+        }
+
+        @Override
+        public void run() {
+            try {
+                command.run();
+            } catch (Throwable t) {
+                logger.error(t.getMessage());
+            }
+        }
+    }
+}
+```
+
 ## 项目模块说明  
 
 名称 | 说明 |
