@@ -1,7 +1,7 @@
 ---
 title: Netty笔记--后期整理
 date: 2018-10-05 10:14:04
-categories: Netty
+categories: Netty学习总结
 tags: 
   - Netty
 ---
@@ -60,6 +60,8 @@ tags:
 2. 回调失败的情况？  
 
 ### netty的核心组件  
+
+参考博客：[Netty——异步和事件驱动](https://juejin.im/entry/590d38dcda2f600053497e45)  
 
 * channel;  
 * 回调；  
